@@ -1,0 +1,20 @@
+{
+  "name": "cli",
+  "type": "module",
+  "scripts": {
+    "dev": "ts-node -T ./src/cli.ts",
+    "build": "ncc build ./src/cli.ts -o dist"
+  },
+  "dependencies": {
+    "@types/inquirer": "^9.0.7",
+    "generator": "*",
+    "inquirer": "^9.2.15"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.2",
+    "@tsconfig/strictest": "^2.0.3",
+    "@types/node": "^20.11.24",
+    "@vercel/ncc": "^0.38.1",
+    "ts-node": "^10.9.2"
+  }
+}
