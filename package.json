@@ -8,7 +8,6 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-typescript-types": "2.12.0",
     "typescript": "^5.3.3"

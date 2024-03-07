@@ -126,6 +126,13 @@ const generateLicense = async () => {
 
       await fs.writeFile(packageJsonFilename, newPackageJson)
       console.log(`✔ package.json updated`)
+    } else {
+      const indent = packageJson.match(/(.*)"name":/)?.[1] ?? '  '
+
+      const newPackageJson = packageJson.replace(
+        /,/,
+        `,\n${indent}"license": "${cleanLicenseName(license)}",\n`
+      )
     }
     console.log(`✔ License added to package.json generated`)
   } catch (error) {}
