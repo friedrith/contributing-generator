@@ -32,7 +32,7 @@ const generateLicense = async () => {
       name: 'license',
       message: 'Choose a license:',
       choices: licenses,
-      default: 'agpl3-header.txt',
+      default: 'mit.txt',
     },
   ])
 
@@ -113,27 +113,22 @@ const generateLicense = async () => {
   console.log(`✔ License file "${generatedLicenseFilename}" generated`)
 
   const packageJsonFilename = path.join(repositoryPath, 'package.json')
-  let foundPackageJson = false
   try {
     await fs.access(packageJsonFilename)
-    foundPackageJson = true
-  } catch (error) {}
 
-  if (foundPackageJson) {
     const packageJson = await fs.readFile(packageJsonFilename, 'utf-8')
 
-    if (packageJson.includes('"license": "ISC"')) {
+    if (packageJson.match('"license": ".*"')) {
       const newPackageJson = packageJson.replace(
-        '"license": "ISC"',
+        /"license": ".*"/,
         `"license": "${cleanLicenseName(license)}"`
       )
 
       await fs.writeFile(packageJsonFilename, newPackageJson)
       console.log(`✔ package.json updated`)
     }
-  }
-
-  console.log(`✔ License file "${generatedLicenseFilename}" generated`)
+    console.log(`✔ License added to package.json generated`)
+  } catch (error) {}
 }
 
 export default generateLicense
