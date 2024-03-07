@@ -88,9 +88,23 @@ const generateLicense = async () => {
     license = license.replace(/{{ project }}/g, project.toString())
   }
 
-  console.log('License file `LICENSE` generated:')
+  const estimatedPath = await context.getRepositoryPath()
+  const { repositoryPath } = await prompt([
+    {
+      type: 'input',
+      name: 'repositoryPath',
+      message: 'Path:',
+      default: estimatedPath,
+    },
+  ])
+
+  const generatedLicenseFilename = path.join(repositoryPath, 'LICENSE')
+
+  console.log(`License file "${generatedLicenseFilename}" generated:`)
   console.log()
   console.log(license)
+
+  await fs.writeFile(generatedLicenseFilename, license)
 }
 
 export default generateLicense

@@ -10,7 +10,7 @@ export const findGitUrl = async () => {
     'remote.origin.url',
   ])
 
-  return stdout
+  return stdout.replace('\n', '')
 }
 
 export const findRepositoryPath = async () => {
@@ -19,7 +19,7 @@ export const findRepositoryPath = async () => {
     '--show-toplevel',
   ])
 
-  return stdout
+  return stdout.replace('\n', '')
 }
 
 const providers = [github]

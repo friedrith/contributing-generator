@@ -1,4 +1,4 @@
-import * as git from './services/git'
+import * as git from './services/git/git'
 
 interface Context {
   organization: string
