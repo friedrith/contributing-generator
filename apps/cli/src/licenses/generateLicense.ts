@@ -26,7 +26,7 @@ const listLicenses = async () => {
 const generateLicense = async () => {
   const licenses = await listLicenses()
 
-  const choices = await prompt([
+  const { license } = await prompt([
     {
       type: 'list',
       name: 'license',
@@ -36,9 +36,9 @@ const generateLicense = async () => {
     },
   ])
 
-  const licenseFilename = path.join(TEMPLATES, choices['license'])
+  const licenseFilename = path.join(TEMPLATES, license)
 
-  let license = await fs.readFile(licenseFilename, 'utf-8')
+  let licenseContent = await fs.readFile(licenseFilename, 'utf-8')
 
   const hasYear = license.includes('{{ year }}')
 
@@ -53,10 +53,10 @@ const generateLicense = async () => {
       },
     ])
 
-    license = license.replace(/{{ year }}/g, year.toString())
+    licenseContent = licenseContent.replace(/{{ year }}/g, year.toString())
   }
 
-  const hasOrganization = license.includes('{{ organization }}')
+  const hasOrganization = licenseContent.includes('{{ organization }}')
 
   if (hasOrganization) {
     const estimatedOrganization = await context.getOrganization()
@@ -69,10 +69,13 @@ const generateLicense = async () => {
       },
     ])
 
-    license = license.replace(/{{ organization }}/g, organization.toString())
+    licenseContent = licenseContent.replace(
+      /{{ organization }}/g,
+      organization.toString()
+    )
   }
 
-  const hasProject = license.includes('{{ project }}')
+  const hasProject = licenseContent.includes('{{ project }}')
 
   if (hasProject) {
     const estimatedProject = (await context.getProject()).name
@@ -85,7 +88,10 @@ const generateLicense = async () => {
       },
     ])
 
-    license = license.replace(/{{ project }}/g, project.toString())
+    licenseContent = licenseContent.replace(
+      /{{ project }}/g,
+      project.toString()
+    )
   }
 
   const estimatedPath = await context.getRepositoryPath()
@@ -100,11 +106,34 @@ const generateLicense = async () => {
 
   const generatedLicenseFilename = path.join(repositoryPath, 'LICENSE')
 
-  console.log(`License file "${generatedLicenseFilename}" generated:`)
   console.log()
-  console.log(license)
+  console.log(licenseContent)
 
-  await fs.writeFile(generatedLicenseFilename, license)
+  await fs.writeFile(generatedLicenseFilename, licenseContent)
+  console.log(`✔ License file "${generatedLicenseFilename}" generated`)
+
+  const packageJsonFilename = path.join(repositoryPath, 'package.json')
+  let foundPackageJson = false
+  try {
+    await fs.access(packageJsonFilename)
+    foundPackageJson = true
+  } catch (error) {}
+
+  if (foundPackageJson) {
+    const packageJson = await fs.readFile(packageJsonFilename, 'utf-8')
+
+    if (packageJson.includes('"license": "ISC"')) {
+      const newPackageJson = packageJson.replace(
+        '"license": "ISC"',
+        `"license": "${cleanLicenseName(license)}"`
+      )
+
+      await fs.writeFile(packageJsonFilename, newPackageJson)
+      console.log(`✔ package.json updated`)
+    }
+  }
+
+  console.log(`✔ License file "${generatedLicenseFilename}" generated`)
 }
 
 export default generateLicense
