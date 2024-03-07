@@ -1,7 +1,6 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import inquirer from 'inquirer'
-import * as url from 'url'
 import dirname from '../services/dirname'
 import * as context from '../context'
 
@@ -88,6 +87,10 @@ const generateLicense = async () => {
 
     license = license.replace(/{{ project }}/g, project.toString())
   }
+
+  console.log('License file `LICENSE` generated:')
+  console.log()
+  console.log(license)
 }
 
 export default generateLicense

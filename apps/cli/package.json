@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@octokit/rest": "^20.0.2",
     "@types/inquirer": "^9.0.7",
     "generator": "*",
     "inquirer": "^9.2.15"

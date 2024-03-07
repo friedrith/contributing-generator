@@ -10,6 +10,7 @@ interface Context {
     provider: string
     name: string
     remoteOriginUrl: string
+    path: string
   }
 }
 
@@ -23,6 +24,7 @@ const context: Context = {
     provider: '',
     name: '',
     remoteOriginUrl: '',
+    path: '',
   },
 }
 
@@ -34,7 +36,7 @@ export const setContext = (partialContext: Partial<Context>) => {
   })
 }
 
-export const findOrganization = async () => {
+const findOrganization = async () => {
   const { organization, provider, url, name } =
     await git.findRepositoryInformation()
 
@@ -43,7 +45,12 @@ export const findOrganization = async () => {
     project: {
       name: name,
     },
-    repository: { provider, name, remoteOriginUrl: url },
+    repository: {
+      provider,
+      name,
+      remoteOriginUrl: url,
+      path: context.repository.path,
+    },
   })
 
   return organization
@@ -53,3 +60,19 @@ export const getOrganization = async () =>
   context.organization || (await findOrganization())
 
 export const getProject = async () => context.project
+
+const findRepositoryPath = async () => {
+  const repositoryPath = await git.findRepositoryPath()
+
+  setContext({
+    repository: {
+      ...context.repository,
+      path: repositoryPath,
+    },
+  })
+
+  return repositoryPath
+}
+
+export const getRepositoryPath = async () =>
+  context.repository.path || (await findRepositoryPath())

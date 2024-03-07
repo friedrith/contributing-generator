@@ -13,6 +13,15 @@ export const findGitUrl = async () => {
   return stdout
 }
 
+export const findRepositoryPath = async () => {
+  const { stdout } = await util.promisify(execFile)('git', [
+    'rev-parse',
+    '--show-toplevel',
+  ])
+
+  return stdout
+}
+
 const providers = [github]
 
 const findAsyncSequential = async <T, P>(
