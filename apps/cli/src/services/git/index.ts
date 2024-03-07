@@ -1,6 +1,7 @@
 import util from 'node:util'
 import { execFile } from 'node:child_process'
 import * as github from './github'
+import extractRepositoryName from './utils/extractRepositoryName'
 
 export const findGitUrl = async () => {
   const { stdout } = await util.promisify(execFile)('git', [
@@ -35,7 +36,7 @@ export const findRepositoryInformation = async (): Promise<{
 }> => {
   const url = await findGitUrl()
 
-  const name = url.match(/([^/]+)\.git$/)?.[1]
+  const name = extractRepositoryName(url)
 
   const { organization, provider } = (await findAsyncSequential(
     providers,
