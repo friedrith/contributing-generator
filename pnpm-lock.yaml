@@ -17,6 +17,9 @@ importers:
 
   apps/cli:
     dependencies:
+      '@inquirer/confirm':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@inquirer/input':
         specifier: ^2.0.0
         version: 2.0.0
@@ -411,6 +414,14 @@ packages:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
+
+  /@inquirer/confirm@3.0.0:
+    resolution: {integrity: sha512-LHeuYP1D8NmQra1eR4UqvZMXwxEdDXyElJmmZfU44xdNLL6+GcQBS0uE16vyfZVjH8c22p9e+DStROfE/hyHrg==}
+    engines: {node: '>=18'}
+    dependencies:
+      '@inquirer/core': 7.0.0
+      '@inquirer/type': 1.2.0
+    dev: false
 
   /@inquirer/core@7.0.0:
     resolution: {integrity: sha512-g13W5yEt9r1sEVVriffJqQ8GWy94OnfxLCreNSOTw0HPVcszmc/If1KIf7YBmlwtX4klmvwpZHnQpl3N7VX2xA==}

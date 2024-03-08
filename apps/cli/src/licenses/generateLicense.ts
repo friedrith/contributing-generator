@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import select from '@inquirer/select'
 import input from '@inquirer/input'
+import confirm from '@inquirer/confirm'
 
 import dirname from '../services/dirname'
 import * as context from '../context'
@@ -112,6 +113,31 @@ const generateLicense = async () => {
       console.log(`✔ License added to package.json`)
     }
   } catch (error) {}
+
+  const readmeFilename = path.join(repositoryPath, 'README.md')
+
+  try {
+    await fs.access(readmeFilename)
+
+    const readme = await fs.readFile(readmeFilename, 'utf-8')
+
+    if (readme.includes('## License')) {
+      const newReadme = readme.replace(
+        /## License\n\n.*\n/,
+        `## License\n\n${licenseContent}\n`
+      )
+
+      await fs.writeFile(readmeFilename, newReadme)
+      console.log(`✔ License updated in README.md`)
+    } else {
+      const newReadme = `${readme}\n## License\n\n${licenseContent}`
+
+      await fs.writeFile(readmeFilename, newReadme)
+      console.log(`✔ License added to README.md`)
+    }
+  } catch (error) {}
+
+  const answer = await confirm({ message: 'Continue?' })
 }
 
 export default generateLicense
