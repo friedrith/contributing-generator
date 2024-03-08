@@ -18,20 +18,24 @@ const listLicenses = async () =>
     .filter(f => f.endsWith('.txt'))
     .map(license => ({ value: license, name: cleanLicenseName(license) }))
 
+const licenseContentInReadme = (license: string) =>
+  `This project is licensed under the ${license} License - see the [LICENSE](LICENSE) file for details.`
+
 const generateLicense = async () => {
   const licenses = await listLicenses()
 
-  const license = await select({
+  const licenseBasename = await select({
     message: 'Choose a license:',
     choices: licenses,
     default: 'mit.txt',
   })
 
-  const licenseFilename = path.join(TEMPLATES, license)
+  const licenseFilename = path.join(TEMPLATES, licenseBasename)
 
   let licenseContent = await fs.readFile(licenseFilename, 'utf-8')
+  const license = cleanLicenseName(licenseBasename)
 
-  const hasYear = license.includes('{{ year }}')
+  const hasYear = licenseContent.includes('{{ year }}')
 
   if (hasYear) {
     const currentYear = new Date().getFullYear()
@@ -96,7 +100,7 @@ const generateLicense = async () => {
     if (packageJson.match('"license": ".*"')) {
       const newPackageJson = packageJson.replace(
         /"license": ".*"/,
-        `"license": "${cleanLicenseName(license)}"`
+        `"license": "${license}"`
       )
 
       await fs.writeFile(packageJsonFilename, newPackageJson)
@@ -106,7 +110,7 @@ const generateLicense = async () => {
 
       const newPackageJson = packageJson.replace(
         /,/,
-        `,\n${indent}"license": "${cleanLicenseName(license)}",`
+        `,\n${indent}"license": "${license}",`
       )
 
       await fs.writeFile(packageJsonFilename, newPackageJson)
@@ -121,23 +125,36 @@ const generateLicense = async () => {
 
     const readme = await fs.readFile(readmeFilename, 'utf-8')
 
-    if (readme.includes('## License')) {
-      const newReadme = readme.replace(
-        /## License\n\n.*\n/,
-        `## License\n\n${licenseContent}\n`
+    const licenseTitle = '## License'
+
+    const indexOfLicense = readme.indexOf(licenseTitle)
+
+    if (indexOfLicense >= 0) {
+      const nextTitle = readme.indexOf(
+        '##',
+        indexOfLicense + licenseTitle.length
       )
 
+      const newReadme = `${readme.slice(
+        0,
+        indexOfLicense
+      )}${licenseTitle}\n\n${licenseContentInReadme(license)}\n${readme.slice(
+        nextTitle
+      )}`
+
       await fs.writeFile(readmeFilename, newReadme)
+      console.log(`✔ License added to README.md`)
+
       console.log(`✔ License updated in README.md`)
     } else {
-      const newReadme = `${readme}\n## License\n\n${licenseContent}`
+      const newReadme = `${readme}\n${licenseTitle}\n\n${licenseContentInReadme(
+        license
+      )}`
 
       await fs.writeFile(readmeFilename, newReadme)
       console.log(`✔ License added to README.md`)
     }
   } catch (error) {}
-
-  const answer = await confirm({ message: 'Continue?' })
 }
 
 export default generateLicense
