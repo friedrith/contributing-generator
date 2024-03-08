@@ -7,10 +7,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "@inquirer/input": "^2.0.0",
+    "@inquirer/select": "^2.0.0",
     "@octokit/rest": "^20.0.2",
     "@types/inquirer": "^9.0.7",
-    "generator": "*",
-    "inquirer": "^9.2.15"
+    "generator": "*"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.2",

@@ -1,40 +1,30 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import inquirer from 'inquirer'
+import select from '@inquirer/select'
+import input from '@inquirer/input'
+
 import dirname from '../services/dirname'
 import * as context from '../context'
 
 // hack because of ESM
 const TEMPLATES = path.join(dirname(import.meta.url), 'templates')
 
-const prompt = inquirer.createPromptModule()
-
 const cleanLicenseName = (license: string) =>
   license.replace('.txt', '').toUpperCase()
 
-const listLicenses = async () => {
-  const licenses = await fs.readdir(TEMPLATES)
-
-  return licenses
+const listLicenses = async () =>
+  (await fs.readdir(TEMPLATES))
     .filter(f => f.endsWith('.txt'))
-    .map(license => ({
-      value: license,
-      name: cleanLicenseName(license),
-    }))
-}
+    .map(license => ({ value: license, name: cleanLicenseName(license) }))
 
 const generateLicense = async () => {
   const licenses = await listLicenses()
 
-  const { license } = await prompt([
-    {
-      type: 'list',
-      name: 'license',
-      message: 'Choose a license:',
-      choices: licenses,
-      default: 'mit.txt',
-    },
-  ])
+  const license = await select({
+    message: 'Choose a license:',
+    choices: licenses,
+    default: 'mit.txt',
+  })
 
   const licenseFilename = path.join(TEMPLATES, license)
 
@@ -44,14 +34,10 @@ const generateLicense = async () => {
 
   if (hasYear) {
     const currentYear = new Date().getFullYear()
-    const { year } = await prompt([
-      {
-        type: 'input',
-        name: 'year',
-        message: 'Year:',
-        default: currentYear,
-      },
-    ])
+    const year = await input({
+      message: 'Year:',
+      default: currentYear.toString(),
+    })
 
     licenseContent = licenseContent.replace(/{{ year }}/g, year.toString())
   }
@@ -60,14 +46,10 @@ const generateLicense = async () => {
 
   if (hasOrganization) {
     const estimatedOrganization = await context.getOrganization()
-    const { organization } = await prompt([
-      {
-        type: 'input',
-        name: 'organization',
-        message: 'Organization:',
-        default: estimatedOrganization,
-      },
-    ])
+    const organization = await input({
+      message: 'Organization:',
+      default: estimatedOrganization,
+    })
 
     licenseContent = licenseContent.replace(
       /{{ organization }}/g,
@@ -79,14 +61,10 @@ const generateLicense = async () => {
 
   if (hasProject) {
     const estimatedProject = (await context.getProject()).name
-    const { project } = await prompt([
-      {
-        type: 'input',
-        name: 'project',
-        message: 'Project:',
-        default: estimatedProject,
-      },
-    ])
+    const project = await input({
+      message: 'Project:',
+      default: estimatedProject,
+    })
 
     licenseContent = licenseContent.replace(
       /{{ project }}/g,
@@ -95,14 +73,10 @@ const generateLicense = async () => {
   }
 
   const estimatedPath = await context.getRepositoryPath()
-  const { repositoryPath } = await prompt([
-    {
-      type: 'input',
-      name: 'repositoryPath',
-      message: 'Path:',
-      default: estimatedPath,
-    },
-  ])
+  const repositoryPath = await input({
+    message: 'Path:',
+    default: estimatedPath,
+  })
 
   const generatedLicenseFilename = path.join(repositoryPath, 'LICENSE')
 
