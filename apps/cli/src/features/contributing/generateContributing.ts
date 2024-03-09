@@ -7,6 +7,8 @@ import dirname from '../../services/dirname'
 import * as context from '../../context'
 import printTerminal from '../../services/terminal/printTerminal'
 import setVariable from '../../services/template/setVariable'
+import showSection from '../../services/template/showSection'
+import hideSection from '../../services/template/hideSection'
 
 // hack because of ESM
 const TEMPLATES = path.join(dirname(import.meta.url), './utils/templates')
@@ -37,6 +39,10 @@ const generateContributing = async () => {
       'issueTrackerUrl',
       issueTrackerUrl
     )
+
+    contributingContent = showSection(contributingContent, 'issue')
+  } else {
+    contributingContent = hideSection(contributingContent, 'issue')
   }
 
   const initialPath = await context.getRepositoryPath()

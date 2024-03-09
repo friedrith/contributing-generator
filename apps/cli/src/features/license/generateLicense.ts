@@ -44,7 +44,7 @@ const generateLicense = async () => {
       default: name,
     })
 
-    licenseContent = setProperty(licenseContent, 'organization', organization)
+    licenseContent = setVariable(licenseContent, 'organization', organization)
   }
 
   const hasProject = hasProperty(licenseContent, 'project')
@@ -52,7 +52,7 @@ const generateLicense = async () => {
     const { name } = await context.getProject()
     const project = await input({ message: 'Project:', default: name })
 
-    licenseContent = setProperty(licenseContent, 'project', project)
+    licenseContent = setVariable(licenseContent, 'project', project)
   }
 
   const initialPath = await context.getRepositoryPath()

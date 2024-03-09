@@ -1,6 +1,7 @@
 # Contributing
 
 :+1::tada: First off, thanks for taking the time to contribute! :tada::+1:
+{{#issue}}
 
 ## Found an Issue?
 
@@ -15,6 +16,8 @@ Please follow these guidelines when reporting issues:
 - Provide the log of the encountered error if applicable
 - Provide the exact version
 - Be awesome and consider contributing a [pull request](#want-to-contribute)
+
+{{/issue}}
 
 ## Want to contribute?
 
