@@ -2,60 +2,43 @@ import util from 'node:util'
 import { execFile } from 'node:child_process'
 import * as github from './github'
 import extractRepositoryName from './utils/extractRepositoryName'
+import Organization from '../../types/Organization'
+import Repository from '../../types/Repository'
 
-export const findGitUrl = async () => {
-  const { stdout } = await util.promisify(execFile)('git', [
-    'config',
-    '--get',
-    'remote.origin.url',
-  ])
+const executeCommand = async (command: string, args: string[]) =>
+  (await util.promisify(execFile)(command, args)).stdout.replace('\n', '')
 
-  return stdout.replace('\n', '')
-}
+export const findGitUrl = async () =>
+  executeCommand('git', ['config', '--get', 'remote.origin.url'])
 
-export const findRepositoryPath = async () => {
-  const { stdout } = await util.promisify(execFile)('git', [
-    'rev-parse',
-    '--show-toplevel',
-  ])
-
-  return stdout.replace('\n', '')
-}
+export const findRepositoryPath = async () =>
+  executeCommand('git', ['rev-parse', '--show-toplevel'])
 
 const providers = [github]
 
-const findAsyncSequential = async <T, P>(
-  array: T[],
-  predicate: (t: T) => Promise<P>
-): Promise<P | undefined> => {
-  for (const t of array) {
-    const result = await predicate(t)
-    if (result) {
-      return result
-    }
-  }
-  return undefined
-}
+export const findRepositoryUrl = async () => findGitUrl()
 
-export const findRepositoryInformation = async (): Promise<{
-  organization: string
-  provider: string
-  name: string
-  url: string
-}> => {
-  const url = await findGitUrl()
+export const findOrganization = async (url: string) =>
+  await providers
+    .find(provider => provider.isProvider(url))
+    .findOrganization(url)
 
-  const name = extractRepositoryName(url)
-
-  const { organization, provider } = (await findAsyncSequential(
-    providers,
-    provider => provider.findRepositoryInformation(url)
-  )) || { organization: '', provider: '' }
+export const findRepository = async (url: string) => {
+  const providerFunctions = providers.find(provider => provider.isProvider(url))
 
   return {
-    organization,
-    provider,
-    name,
-    url,
+    provider: providerFunctions.getProviderName(),
+    name: extractRepositoryName(url),
   }
+}
+
+export const findIssueTrackerUrl = async (
+  organization: Organization,
+  repository: Repository
+) => {
+  const providerFunctions = providers.find(provider =>
+    provider.isProvider(repository.remoteOriginUrl)
+  )
+
+  return providerFunctions.getIssueTrackerUrl(organization, repository)
 }

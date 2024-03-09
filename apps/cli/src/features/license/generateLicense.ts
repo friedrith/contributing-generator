@@ -16,6 +16,7 @@ const licenseContentInReadme = (license: string) =>
   `This project is licensed under the ${license} License - see the [LICENSE](LICENSE) file for details.`
 
 const generateLicense = async () => {
+  context.init()
   const licenses = await listLicenseFiles()
 
   const licenseFilename = await select({
@@ -29,7 +30,7 @@ const generateLicense = async () => {
 
   const hasYear = hasProperty(licenseContent, 'year')
   if (hasYear) {
-    const currentYear = new Date().getFullYear().toString()
+    const currentYear = await context.getYear()
     const year = await input({ message: 'Year:', default: currentYear })
 
     licenseContent = setProperty(licenseContent, 'year', year.toString())
@@ -37,10 +38,10 @@ const generateLicense = async () => {
 
   const hasOrganization = hasProperty(licenseContent, 'organization')
   if (hasOrganization) {
-    const currentOrganization = await context.getOrganization()
+    const { name } = await context.getOrganization()
     const organization = await input({
       message: 'Organization:',
-      default: currentOrganization,
+      default: name,
     })
 
     licenseContent = setProperty(licenseContent, 'organization', organization)
@@ -48,11 +49,8 @@ const generateLicense = async () => {
 
   const hasProject = hasProperty(licenseContent, 'project')
   if (hasProject) {
-    const currentProject = (await context.getProject()).name
-    const project = await input({
-      message: 'Project:',
-      default: currentProject,
-    })
+    const { name } = await context.getProject()
+    const project = await input({ message: 'Project:', default: name })
 
     licenseContent = setProperty(licenseContent, 'project', project)
   }
