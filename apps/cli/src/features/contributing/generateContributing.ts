@@ -10,6 +10,7 @@ import setVariable from '../../services/template/setVariable'
 import showSection from '../../services/template/showSection'
 import hideSection from '../../services/template/hideSection'
 import * as packageConfig from '../package'
+import * as readme from '../readme'
 import * as packageManager from '../package/packageManager'
 
 // hack because of ESM
@@ -18,6 +19,9 @@ const TEMPLATES = path.join(dirname(import.meta.url), './utils/templates')
 const CONTRIBUTING = 'CONTRIBUTING.md'
 
 export const getFullPath = (basename: string) => path.join(TEMPLATES, basename)
+
+const contributingContentInReadme = () =>
+  `Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.`
 
 const generateContributing = async () => {
   const templateFilename = path.join(TEMPLATES, CONTRIBUTING)
@@ -61,10 +65,11 @@ const generateContributing = async () => {
   const addTestSection = await confirm({
     message: 'Add a section "how to write tests"?',
   })
+
+  const repositoryPath = await context.getRepositoryPath()
+
   if (addTestSection) {
     try {
-      const repositoryPath = await context.getRepositoryPath()
-
       const packageJsonFilename =
         packageConfig.getPackageConfigFilename(repositoryPath)
 
@@ -94,8 +99,7 @@ const generateContributing = async () => {
     contributingContent = hideSection(contributingContent, 'test')
   }
 
-  const initialPath = await context.getRepositoryPath()
-  const contributingPath = path.join(initialPath, CONTRIBUTING)
+  const contributingPath = path.join(repositoryPath, CONTRIBUTING)
 
   const generatedContributingFilename = await input({
     message: 'CONTRIBUTING Path:',
@@ -108,6 +112,23 @@ const generateContributing = async () => {
   console.log(contributingContent)
 
   printTerminal('Contributing file generated')
+
+  try {
+    const readmeFilename = path.join(repositoryPath, 'README.md')
+
+    await fs.access(readmeFilename)
+
+    const readmeContent = await fs.readFile(readmeFilename, 'utf-8')
+
+    const { content: newReadme, message } = readme.setSection(
+      readmeContent,
+      'Contributing',
+      contributingContentInReadme()
+    )
+
+    await fs.writeFile(readmeFilename, newReadme)
+    printTerminal(message)
+  } catch (error) {}
 }
 
 export default generateContributing
