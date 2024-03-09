@@ -9,6 +9,8 @@ import printTerminal from '../../services/terminal/printTerminal'
 import setVariable from '../../services/template/setVariable'
 import showSection from '../../services/template/showSection'
 import hideSection from '../../services/template/hideSection'
+import * as packageConfig from '../package'
+import * as packageManager from '../package/packageManager'
 
 // hack because of ESM
 const TEMPLATES = path.join(dirname(import.meta.url), './utils/templates')
@@ -60,12 +62,33 @@ const generateContributing = async () => {
     message: 'Add a section "how to write tests"?',
   })
   if (addTestSection) {
-    const commandTest = 'You can launch tests using `yarn test`.'
-    contributingContent = setVariable(
-      contributingContent,
-      'commandTest',
-      commandTest
-    )
+    try {
+      const repositoryPath = await context.getRepositoryPath()
+
+      const packageJsonFilename =
+        packageConfig.getPackageConfigFilename(repositoryPath)
+
+      const packageJson = await fs.readFile(packageJsonFilename, 'utf-8')
+
+      if (packageConfig.hasProperty(packageJson, 'test')) {
+        const command = await packageManager.getCommand(repositoryPath, 'test')
+        const commandTest = `You can launch tests using \`${command}\`.`
+        contributingContent = setVariable(
+          contributingContent,
+          'commandTest',
+          commandTest
+        )
+      } else {
+        contributingContent = setVariable(
+          contributingContent,
+          'commandTest',
+          ''
+        )
+      }
+    } catch (error) {
+      contributingContent = setVariable(contributingContent, 'commandTest', '')
+    }
+
     contributingContent = showSection(contributingContent, 'test')
   } else {
     contributingContent = hideSection(contributingContent, 'test')

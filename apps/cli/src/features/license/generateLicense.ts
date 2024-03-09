@@ -66,7 +66,9 @@ const generateLicense = async () => {
   await fs.writeFile(generatedLicenseFilename, licenseContent)
   printTerminal(`License file "${generatedLicenseFilename}" generated`)
 
-  const packageJsonFilename = path.join(repositoryPath, 'package.json')
+  const packageJsonFilename =
+    packageConfig.getPackageConfigFilename(repositoryPath)
+
   try {
     await fs.access(packageJsonFilename)
 

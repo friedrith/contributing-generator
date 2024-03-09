@@ -1,4 +1,4 @@
-import * as git from './services/git/git'
+import * as git from './services/git'
 import Organization from './types/Organization'
 import Project from './types/Project'
 import Repository from './types/Repository'
