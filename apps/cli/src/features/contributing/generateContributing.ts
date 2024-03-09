@@ -56,6 +56,21 @@ const generateContributing = async () => {
     contributingContent = hideSection(contributingContent, 'commit')
   }
 
+  const addTestSection = await confirm({
+    message: 'Add a section "how to write tests"?',
+  })
+  if (addTestSection) {
+    const commandTest = 'You can launch tests using `yarn test`.'
+    contributingContent = setVariable(
+      contributingContent,
+      'commandTest',
+      commandTest
+    )
+    contributingContent = showSection(contributingContent, 'test')
+  } else {
+    contributingContent = hideSection(contributingContent, 'test')
+  }
+
   const initialPath = await context.getRepositoryPath()
   const contributingPath = path.join(initialPath, CONTRIBUTING)
 

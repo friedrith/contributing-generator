@@ -2,7 +2,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import select from '@inquirer/select'
 import input from '@inquirer/input'
-import * as packageConfig from '../packageConfig'
+import * as packageConfig from '../package'
 
 import * as context from '../../context'
 import listLicenseFiles, { getFullPath } from './utils/listLicenseFiles'

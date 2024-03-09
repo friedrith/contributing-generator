@@ -80,11 +80,17 @@ These are the authorized types:
 > Using the right type is really important since it is used to increase the version number automatically.
 
 {{/commit}}
+{{#test}}
 
 ## Test
 
-If you add a feature or fix a bug, you need to provide a test verifying your
-improvement. You can launch tests using `yarn test`.
+If you add a feature or fix a bug, you need to provide a unit test verifying your
+improvement.{{ commandTest }}
+
+Please follow [AAA pattern](https://medium.com/@pjbgf/title-testing-code-ocd-and-the-aaa-pattern-df453975ab80)
+when writing tests.
+
+{{/test}}
 
 ## Versioning
 
