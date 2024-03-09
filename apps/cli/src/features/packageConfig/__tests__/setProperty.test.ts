@@ -1,4 +1,4 @@
-import setProperty from '../setProperty'
+import setProperty from '../properties/setProperty'
 
 const formattedContent = (content: object) => JSON.stringify(content, null, 2)
 
@@ -49,7 +49,7 @@ describe('setProperty', () => {
 
       const newContent = setProperty(content, 'license', 'MIT')
 
-      expect(newContent.message).toBe('✔ license updated in package.json')
+      expect(newContent.message).toBe('license updated in package.json')
     })
   })
 
@@ -79,7 +79,7 @@ describe('setProperty', () => {
 
       const newContent = setProperty(content, 'license', 'MIT')
 
-      expect(newContent.message).toBe('✔ license added to package.json')
+      expect(newContent.message).toBe('license added to package.json')
     })
   })
 })

@@ -5,7 +5,7 @@ const setProperty = (content: string, name: string, value: string) => {
 
     return {
       content: newContent,
-      message: `✔ ${name} updated in package.json`,
+      message: `${name} updated in package.json`,
     }
   }
 
@@ -15,7 +15,7 @@ const setProperty = (content: string, name: string, value: string) => {
 
   return {
     content: newContent,
-    message: `✔ ${name} added to package.json`,
+    message: `${name} added to package.json`,
   }
 }
 

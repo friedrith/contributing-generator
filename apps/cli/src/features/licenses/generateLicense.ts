@@ -3,67 +3,48 @@ import path from 'node:path'
 import select from '@inquirer/select'
 import input from '@inquirer/input'
 import confirm from '@inquirer/confirm'
+import * as packageConfig from '../packageConfig'
 
-import dirname from '../../services/dirname'
 import * as context from '../../context'
-
-// hack because of ESM
-const TEMPLATES = path.join(dirname(import.meta.url), 'templates')
-
-const cleanLicenseName = (license: string) =>
-  license.replace('.txt', '').toUpperCase()
-
-const listLicenses = async () =>
-  (await fs.readdir(TEMPLATES))
-    .filter(f => f.endsWith('.txt'))
-    .map(license => ({ value: license, name: cleanLicenseName(license) }))
+import listLicenseFiles, { getFullPath } from './listLicenseFiles'
+import cleanLicenseName from './cleanLicenseName'
+import hasProperty from './properties/hasProperty'
 
 const licenseContentInReadme = (license: string) =>
   `This project is licensed under the ${license} License - see the [LICENSE](LICENSE) file for details.`
 
 const generateLicense = async () => {
-  const licenses = await listLicenses()
+  const licenses = await listLicenseFiles()
 
-  const licenseBasename = await select({
+  const licenseFilename = await select({
     message: 'Choose a license:',
     choices: licenses,
-    default: 'mit.txt',
+    default: getFullPath('mit.txt'),
   })
-
-  const licenseFilename = path.join(TEMPLATES, licenseBasename)
+  const license = cleanLicenseName(path.basename(licenseFilename))
 
   let licenseContent = await fs.readFile(licenseFilename, 'utf-8')
-  const license = cleanLicenseName(licenseBasename)
 
-  const hasYear = licenseContent.includes('{{ year }}')
-
+  const hasYear = hasProperty(licenseContent, 'year')
   if (hasYear) {
-    const currentYear = new Date().getFullYear()
-    const year = await input({
-      message: 'Year:',
-      default: currentYear.toString(),
-    })
+    const currentYear = new Date().getFullYear().toString()
+    const year = await input({ message: 'Year:', default: currentYear })
 
-    licenseContent = licenseContent.replace(/{{ year }}/g, year.toString())
+    licenseContent = setProperty(licenseContent, 'year', year.toString())
   }
 
-  const hasOrganization = licenseContent.includes('{{ organization }}')
-
+  const hasOrganization = hasProperty(licenseContent, 'organization')
   if (hasOrganization) {
-    const estimatedOrganization = await context.getOrganization()
+    const currentOrganization = await context.getOrganization()
     const organization = await input({
       message: 'Organization:',
-      default: estimatedOrganization,
+      default: currentOrganization,
     })
 
-    licenseContent = licenseContent.replace(
-      /{{ organization }}/g,
-      organization.toString()
-    )
+    licenseContent = setProperty(licenseContent, 'organization', organization)
   }
 
-  const hasProject = licenseContent.includes('{{ project }}')
-
+  const hasProject = hasProperty(licenseContent, 'project')
   if (hasProject) {
     const estimatedProject = (await context.getProject()).name
     const project = await input({
@@ -71,10 +52,7 @@ const generateLicense = async () => {
       default: estimatedProject,
     })
 
-    licenseContent = licenseContent.replace(
-      /{{ project }}/g,
-      project.toString()
-    )
+    licenseContent = setProperty(licenseContent, 'project', project)
   }
 
   const estimatedPath = await context.getRepositoryPath()
@@ -97,25 +75,14 @@ const generateLicense = async () => {
 
     const packageJson = await fs.readFile(packageJsonFilename, 'utf-8')
 
-    if (packageJson.match('"license": ".*"')) {
-      const newPackageJson = packageJson.replace(
-        /"license": ".*"/,
-        `"license": "${license}"`
-      )
+    const { content: newPackageJson, message } = packageConfig.setProperty(
+      packageJson,
+      'license',
+      license
+    )
 
-      await fs.writeFile(packageJsonFilename, newPackageJson)
-      console.log(`✔ License updated in package.json`)
-    } else {
-      const indent = packageJson.match(/(.*)"name":/)?.[1] ?? '  '
-
-      const newPackageJson = packageJson.replace(
-        /,/,
-        `,\n${indent}"license": "${license}",`
-      )
-
-      await fs.writeFile(packageJsonFilename, newPackageJson)
-      console.log(`✔ License added to package.json`)
-    }
+    await fs.writeFile(packageJsonFilename, newPackageJson)
+    console.log(`✔ ${message}`)
   } catch (error) {}
 
   const readmeFilename = path.join(repositoryPath, 'README.md')
