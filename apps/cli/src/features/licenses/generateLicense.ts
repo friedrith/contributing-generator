@@ -10,7 +10,7 @@ import cleanLicenseName from './utils/cleanLicenseName'
 import hasProperty from './utils/properties/hasProperty'
 import setProperty from './utils/properties/setProperty'
 import * as readme from '../readme'
-import printTerminal from 'services/terminal/printTerminal'
+import printTerminal from '../../services/terminal/printTerminal'
 
 const licenseContentInReadme = (license: string) =>
   `This project is licensed under the ${license} License - see the [LICENSE](LICENSE) file for details.`
