@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import dirname from '../../services/dirname'
+import dirname from '../../../services/dirname'
 import cleanLicenseName from './cleanLicenseName'
 
 // hack because of ESM

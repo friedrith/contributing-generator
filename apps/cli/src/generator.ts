@@ -1,4 +1,4 @@
-import generateLicense from './licenses/generateLicense'
+import generateLicense from './features/licenses/generateLicense'
 
 const generator = async () => {
   await generateLicense()
