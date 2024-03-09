@@ -6,7 +6,7 @@ import input from '@inquirer/input'
 import dirname from '../../services/dirname'
 import * as context from '../../context'
 import printTerminal from '../../services/terminal/printTerminal'
-import setProperty from './utils/setProperty'
+import setVariable from '../../services/template/setVariable'
 
 // hack because of ESM
 const TEMPLATES = path.join(dirname(import.meta.url), './utils/templates')
@@ -32,7 +32,7 @@ const generateContributing = async () => {
       default: await context.getIssueTrackerUrl(),
     })
 
-    contributingContent = setProperty(
+    contributingContent = setVariable(
       contributingContent,
       'issueTrackerUrl',
       issueTrackerUrl

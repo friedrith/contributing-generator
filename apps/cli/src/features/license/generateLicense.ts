@@ -8,9 +8,9 @@ import * as context from '../../context'
 import listLicenseFiles, { getFullPath } from './utils/listLicenseFiles'
 import cleanLicenseName from './utils/cleanLicenseName'
 import hasProperty from './utils/properties/hasProperty'
-import setProperty from './utils/properties/setProperty'
 import * as readme from '../readme'
 import printTerminal from '../../services/terminal/printTerminal'
+import setVariable from '../../services/template/setVariable'
 
 const licenseContentInReadme = (license: string) =>
   `This project is licensed under the ${license} License - see the [LICENSE](LICENSE) file for details.`
@@ -33,7 +33,7 @@ const generateLicense = async () => {
     const currentYear = await context.getYear()
     const year = await input({ message: 'Year:', default: currentYear })
 
-    licenseContent = setProperty(licenseContent, 'year', year.toString())
+    licenseContent = setVariable(licenseContent, 'year', year.toString())
   }
 
   const hasOrganization = hasProperty(licenseContent, 'organization')
