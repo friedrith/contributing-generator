@@ -51,6 +51,8 @@ To keep the code base of commitlint neat and tidy the following rules apply to e
 
 > You can also use `npx prettier --write .` to fix prettier errors
 
+{{#commit}}
+
 ## Commit Rules
 
 To help everyone with understanding the commit history of commitlint the following commit rules are enforced.
@@ -76,6 +78,8 @@ These are the authorized types:
 - test
 
 > Using the right type is really important since it is used to increase the version number automatically.
+
+{{/commit}}
 
 ## Test
 

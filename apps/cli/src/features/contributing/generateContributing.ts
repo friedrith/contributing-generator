@@ -24,10 +24,11 @@ const generateContributing = async () => {
 
   let contributingContent = templateContent
 
-  const addIssueSection = await confirm({ message: 'Add issue section?' })
-
   await context.init()
 
+  const addIssueSection = await confirm({
+    message: 'Add a section "how to create an issue"?',
+  })
   if (addIssueSection) {
     const issueTrackerUrl = await input({
       message: 'Issue tracker url:',
@@ -43,6 +44,16 @@ const generateContributing = async () => {
     contributingContent = showSection(contributingContent, 'issue')
   } else {
     contributingContent = hideSection(contributingContent, 'issue')
+  }
+
+  const addCommitSection = await confirm({
+    message:
+      'Add a section "how to create a commit (following conventional commit format)"?',
+  })
+  if (addCommitSection) {
+    contributingContent = showSection(contributingContent, 'commit')
+  } else {
+    contributingContent = hideSection(contributingContent, 'commit')
   }
 
   const initialPath = await context.getRepositoryPath()
