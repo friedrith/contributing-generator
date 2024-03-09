@@ -4,8 +4,8 @@ import select from '@inquirer/select'
 import input from '@inquirer/input'
 import confirm from '@inquirer/confirm'
 
-import dirname from '../services/dirname'
-import * as context from '../context'
+import dirname from '../../services/dirname'
+import * as context from '../../context'
 
 // hack because of ESM
 const TEMPLATES = path.join(dirname(import.meta.url), 'templates')
@@ -138,7 +138,7 @@ const generateLicense = async () => {
       const newReadme = `${readme.slice(
         0,
         indexOfLicense
-      )}${licenseTitle}\n\n${licenseContentInReadme(license)}\n${readme.slice(
+      )}${licenseTitle}\n\n${licenseContentInReadme(license)}\n\n${readme.slice(
         nextTitle
       )}`
 
