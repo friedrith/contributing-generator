@@ -16,6 +16,9 @@ export const findRepositoryPath = async () =>
 
 const providers = [github]
 
+const findProvider = async (url: string) =>
+  providers.find(provider => provider.isProvider(url))
+
 export const findRepositoryUrl = async () => findGitUrl()
 
 export const findOrganization = async (url: string) =>
@@ -23,11 +26,11 @@ export const findOrganization = async (url: string) =>
     .find(provider => provider.isProvider(url))
     .findOrganization(url)
 
-export const findRepository = async (url: string) => {
-  const providerFunctions = providers.find(provider => provider.isProvider(url))
-
+export const findRepository = async (url: string): Promise<Repository> => {
   return {
-    provider: providerFunctions.getProviderName(),
+    remoteOriginUrl: url,
+    path: await findRepositoryPath(),
+    provider: (await findProvider(url)).getProviderName(),
     name: extractRepositoryName(url),
   }
 }
@@ -35,10 +38,8 @@ export const findRepository = async (url: string) => {
 export const findIssueTrackerUrl = async (
   organization: Organization,
   repository: Repository
-) => {
-  const providerFunctions = providers.find(provider =>
-    provider.isProvider(repository.remoteOriginUrl)
+) =>
+  (await findProvider(repository.remoteOriginUrl)).getIssueTrackerUrl(
+    organization,
+    repository
   )
-
-  return providerFunctions.getIssueTrackerUrl(organization, repository)
-}

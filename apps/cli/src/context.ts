@@ -73,11 +73,7 @@ export const init = async () => {
 
   const organization = await git.findOrganization(url)
 
-  const repository = {
-    remoteOriginUrl: url,
-    path: await findRepositoryPath(),
-    ...(await git.findRepository(url)),
-  }
+  const repository = await git.findRepository(url)
 
   setContext({
     organization,

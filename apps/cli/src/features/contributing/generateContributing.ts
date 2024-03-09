@@ -1,7 +1,7 @@
-import input from '@inquirer/input'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import confirm from '@inquirer/confirm'
+import input from '@inquirer/input'
 
 import dirname from '../../services/dirname'
 import * as context from '../../context'
@@ -24,10 +24,13 @@ const generateContributing = async () => {
 
   const addIssueSection = await confirm({ message: 'Add issue section?' })
 
-  context.init()
+  await context.init()
 
   if (addIssueSection) {
-    const issueTrackerUrl = await context.getIssueTrackerUrl()
+    const issueTrackerUrl = await input({
+      message: 'Issue tracker url:',
+      default: await context.getIssueTrackerUrl(),
+    })
 
     contributingContent = setProperty(
       contributingContent,
@@ -37,9 +40,12 @@ const generateContributing = async () => {
   }
 
   const initialPath = await context.getRepositoryPath()
-  const repositoryPath = await input({ message: 'Path:', default: initialPath })
+  const contributingPath = path.join(initialPath, CONTRIBUTING)
 
-  const generatedContributingFilename = path.join(repositoryPath, CONTRIBUTING)
+  const generatedContributingFilename = await input({
+    message: 'CONTRIBUTING Path:',
+    default: contributingPath,
+  })
 
   await fs.writeFile(generatedContributingFilename, contributingContent)
 

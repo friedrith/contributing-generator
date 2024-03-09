@@ -16,7 +16,7 @@ const licenseContentInReadme = (license: string) =>
   `This project is licensed under the ${license} License - see the [LICENSE](LICENSE) file for details.`
 
 const generateLicense = async () => {
-  context.init()
+  await context.init()
   const licenses = await listLicenseFiles()
 
   const licenseFilename = await select({
