@@ -14,10 +14,6 @@
     "noEmit": true,
     "outDir": "dist",
     "lib": [ "esnext" ],
-    "baseUrl": "src",
-    "paths": {
-      "@utils": ["utils"]
-    }
 	},
   "ts-node": {
     "esm": true,

@@ -1,11 +1,17 @@
 import select from '@inquirer/select'
 
-import generateLicense from './features/licenses/generateLicense'
+import generateLicense from './features/license/generateLicense'
+import generateContributing from './features/contributing/generateContributing'
+
+const generators = {
+  license: generateLicense,
+  contributing: generateContributing,
+}
 
 const generator = async () => {
-  const choices = ['license', 'readme', 'contributing'].map(choice => ({
-    value: choice,
-    label: choice,
+  const choices = Object.keys(generators).map(value => ({
+    value,
+    label: value,
   }))
 
   const option = await select({
@@ -13,8 +19,8 @@ const generator = async () => {
     choices,
   })
 
-  if (option === 'license') {
-    await generateLicense()
+  if (option in generators) {
+    await generators[option]()
   } else {
     console.log('Not implemented yet')
   }
