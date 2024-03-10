@@ -37,6 +37,8 @@ Please consider these guidelines when filing a pull request:
   _ What you removed
 - For significant changes, post also an issue before to know if your idea has a chance to be accepted
 
+{{#coding}}
+
 ## Coding Rules
 
 To keep the code base of commitlint neat and tidy the following rules apply to every change
@@ -46,36 +48,22 @@ To keep the code base of commitlint neat and tidy the following rules apply to e
 - Favor micro library over swiss army knives (rimraf, ncp vs. fs-extra)
 - Be awesome
 
-> use commands `yarn lint` and `yarn format` to be sure your code
-> respect coding rules.
-
 > You can also use `npx prettier --write .` to fix prettier errors
+
+{{/coding}}
 
 {{#commit}}
 
 ## Commit Rules
 
-To help everyone with understanding the commit history of commitlint the following commit rules are enforced.
+To help everyone with understanding the commit history of commitlint the following commit rules are enforced:
 
 - [conventional commits](https://www.conventionalcommits.org/en/v1.0.0-beta.3/)
 - present tense
 - maximum of 100 characters
 - for bugs, includes the github tag of the issue in the description.
 - message format of `$type($scope): $message`
-
-These are the authorized types:
-
-- build
-- ci
-- chore
-- docs
-- feat
-- fix
-- perf
-- refactor
-- revert
-- style
-- test
+- use authorized types: build, ci, chore, docs, feat, fix, perf, refactor, revert, style, test
 
 > Using the right type is really important since it is used to increase the version number automatically.
 
@@ -91,10 +79,11 @@ Please follow [AAA pattern](https://medium.com/@pjbgf/title-testing-code-ocd-and
 when writing tests.
 
 {{/test}}
+{{#versioning}}
 
 ## Versioning
 
-This project use [standard-version](https://github.com/conventional-changelog/standard-version) to handle versioning
-automatically.
+This project use [semantic versioning](https://semver.org/). The version number is increased based on the commit messages.
+{{/versioning}}
 
 **May the force be with you !!**
