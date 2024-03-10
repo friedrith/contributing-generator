@@ -1,12 +1,12 @@
-import type { Config } from "jest";
+import type { Config } from 'jest'
 
 const config: Config = {
-  testMatch: ["<rootDir>/src/**/*.test.{tsx,ts}"],
-  preset: "ts-jest",
+  testMatch: ['<rootDir>/src/**/*.test.{tsx,ts}'],
+  preset: 'ts-jest',
   moduleNameMapper: {
-    "~/(.*)$": "<rootDir>/$1",
+    '~/(.*)$': '<rootDir>/$1',
   },
   verbose: true,
-};
+}
 
-export default config;
+export default config

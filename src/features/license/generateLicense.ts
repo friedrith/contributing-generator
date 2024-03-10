@@ -1,107 +1,107 @@
-import { promises as fs } from "node:fs";
-import path from "node:path";
-import select from "@inquirer/select";
-import input from "@inquirer/input";
-import * as packageConfig from "../package";
+import { promises as fs } from 'node:fs'
+import path from 'node:path'
+import select from '@inquirer/select'
+import input from '@inquirer/input'
+import * as packageConfig from '../package'
 
-import * as context from "../../context";
-import listLicenseFiles, { getFullPath } from "./utils/listLicenseFiles";
-import cleanLicenseName from "./utils/cleanLicenseName";
-import hasProperty from "./utils/properties/hasProperty";
-import * as readme from "../readme";
-import printTerminal from "../../services/terminal/printTerminal";
-import setVariable from "../../services/template/setVariable";
-import getLicenseContentInReadme from "./utils/getLicenseContentInReadme";
-import getLicenseFilename from "./utils/getLicenseFilename";
+import * as context from '../../context'
+import listLicenseFiles, { getFullPath } from './utils/listLicenseFiles'
+import cleanLicenseName from './utils/cleanLicenseName'
+import hasProperty from './utils/properties/hasProperty'
+import * as readme from '../readme'
+import printTerminal from '../../services/terminal/printTerminal'
+import setVariable from '../../services/template/setVariable'
+import getLicenseContentInReadme from './utils/getLicenseContentInReadme'
+import getLicenseFilename from './utils/getLicenseFilename'
 
 const generateLicense = async () => {
-  await context.init();
-  const licenses = await listLicenseFiles();
+  await context.init()
+  const licenses = await listLicenseFiles()
 
   const licenseFilename = await select({
-    message: "Choose a license:",
+    message: 'Choose a license:',
     choices: licenses,
-    default: getFullPath("mit.txt"),
-  });
-  const license = cleanLicenseName(path.basename(licenseFilename));
+    default: getFullPath('mit.txt'),
+  })
+  const license = cleanLicenseName(path.basename(licenseFilename))
 
-  let licenseContent = await fs.readFile(licenseFilename, "utf-8");
+  let licenseContent = await fs.readFile(licenseFilename, 'utf-8')
 
-  const hasYear = hasProperty(licenseContent, "year");
+  const hasYear = hasProperty(licenseContent, 'year')
   if (hasYear) {
-    const currentYear = await context.getYear();
-    const year = await input({ message: "Year:", default: currentYear });
+    const currentYear = await context.getYear()
+    const year = await input({ message: 'Year:', default: currentYear })
 
-    licenseContent = setVariable(licenseContent, "year", year.toString());
+    licenseContent = setVariable(licenseContent, 'year', year.toString())
   }
 
-  const hasOrganization = hasProperty(licenseContent, "organization");
+  const hasOrganization = hasProperty(licenseContent, 'organization')
   if (hasOrganization) {
-    const { name } = await context.getOrganization();
+    const { name } = await context.getOrganization()
     const organization = await input({
-      message: "Organization:",
+      message: 'Organization:',
       default: name,
-    });
+    })
 
-    licenseContent = setVariable(licenseContent, "organization", organization);
+    licenseContent = setVariable(licenseContent, 'organization', organization)
   }
 
-  const hasProject = hasProperty(licenseContent, "project");
+  const hasProject = hasProperty(licenseContent, 'project')
   if (hasProject) {
-    const { name } = await context.getProject();
-    const project = await input({ message: "Project:", default: name });
+    const { name } = await context.getProject()
+    const project = await input({ message: 'Project:', default: name })
 
-    licenseContent = setVariable(licenseContent, "project", project);
+    licenseContent = setVariable(licenseContent, 'project', project)
   }
 
-  const initialPath = await context.getRepositoryPath();
+  const initialPath = await context.getRepositoryPath()
   const repositoryPath = await input({
-    message: "Path:",
+    message: 'Path:',
     default: initialPath,
-  });
+  })
 
-  const generatedLicenseFilename = getLicenseFilename(repositoryPath);
+  const generatedLicenseFilename = getLicenseFilename(repositoryPath)
 
-  console.log();
-  console.log(licenseContent);
+  console.log()
+  console.log(licenseContent)
 
-  await fs.writeFile(generatedLicenseFilename, licenseContent);
-  printTerminal(`License file "${generatedLicenseFilename}" generated`);
+  await fs.writeFile(generatedLicenseFilename, licenseContent)
+  printTerminal(`License file "${generatedLicenseFilename}" generated`)
 
   const packageJsonFilename =
-    packageConfig.getPackageConfigFilename(repositoryPath);
+    packageConfig.getPackageConfigFilename(repositoryPath)
 
   try {
-    await fs.access(packageJsonFilename);
+    await fs.access(packageJsonFilename)
 
-    const packageJson = await fs.readFile(packageJsonFilename, "utf-8");
+    const packageJson = await fs.readFile(packageJsonFilename, 'utf-8')
 
     const { content: newPackageJson, message } = packageConfig.setProperty(
       packageJson,
-      "license",
+      'license',
       license,
-    );
+    )
 
-    await fs.writeFile(packageJsonFilename, newPackageJson);
-    printTerminal(message);
+    await fs.writeFile(packageJsonFilename, newPackageJson)
+    printTerminal(message)
   } catch (error) {}
 
-  const readmeFilename = path.join(repositoryPath, "README.md");
+  const readmeFilename = path.join(repositoryPath, 'README.md')
 
   try {
-    await fs.access(readmeFilename);
+    await fs.access(readmeFilename)
 
-    const readmeContent = await fs.readFile(readmeFilename, "utf-8");
+    const readmeContent = await fs.readFile(readmeFilename, 'utf-8')
 
     const { content: newReadme, message } = readme.setSection(
       readmeContent,
-      "License",
+      'License',
       getLicenseContentInReadme(license),
-    );
+    )
 
-    await fs.writeFile(readmeFilename, newReadme);
-    printTerminal(message);
+    await fs.writeFile(readmeFilename, newReadme)
+    printTerminal(message)
   } catch (error) {}
-};
+}
 
-export default generateLicense;
+export default generateLicense

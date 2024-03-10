@@ -1,6 +1,6 @@
-import path from "node:path";
+import path from 'node:path'
 
 const getContributingFilename = (repositoryPath: string) =>
-  path.join(repositoryPath, "CONTRIBUTING.md");
+  path.join(repositoryPath, 'CONTRIBUTING.md')
 
-export default getContributingFilename;
+export default getContributingFilename

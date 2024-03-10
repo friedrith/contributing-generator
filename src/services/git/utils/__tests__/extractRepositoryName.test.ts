@@ -1,11 +1,11 @@
-import extractRepositoryName from "../extractRepositoryName";
+import extractRepositoryName from '../extractRepositoryName'
 
-describe("extractRepositoryName", () => {
-  it("should return the repository name", () => {
+describe('extractRepositoryName', () => {
+  it('should return the repository name', () => {
     const name = extractRepositoryName(
-      "git@github.com:friedrith/contributing-generator.git",
-    );
+      'git@github.com:friedrith/contributing-generator.git',
+    )
 
-    expect(name).toBe("contributing-generator");
-  });
-});
+    expect(name).toBe('contributing-generator')
+  })
+})

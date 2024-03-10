@@ -1,1 +1,1 @@
-export { default as setSection } from "./section/setSection";
+export { default as setSection } from './section/setSection'

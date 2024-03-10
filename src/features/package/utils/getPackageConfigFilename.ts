@@ -1,6 +1,6 @@
-import path from "node:path";
+import path from 'node:path'
 
 const getPackageConfigFilename = (repositoryPath: string) =>
-  path.join(repositoryPath, "package.json");
+  path.join(repositoryPath, 'package.json')
 
-export default getPackageConfigFilename;
+export default getPackageConfigFilename

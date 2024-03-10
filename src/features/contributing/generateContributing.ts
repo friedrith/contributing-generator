@@ -41,7 +41,7 @@ const generateContributing = async () => {
     contributingContent = setVariable(
       contributingContent,
       'issueTrackerUrl',
-      issueTrackerUrl
+      issueTrackerUrl,
     )
 
     contributingContent = showSection(contributingContent, 'issue')
@@ -87,13 +87,13 @@ const generateContributing = async () => {
         contributingContent = setVariable(
           contributingContent,
           'commandTest',
-          commandTest
+          commandTest,
         )
       } else {
         contributingContent = setVariable(
           contributingContent,
           'commandTest',
-          ''
+          '',
         )
       }
     } catch (error) {
@@ -138,7 +138,7 @@ const generateContributing = async () => {
     const { content: newReadme, message } = readme.setSection(
       readmeContent,
       'Contributing',
-      getContributingContentInReadme()
+      getContributingContentInReadme(),
     )
 
     await fs.writeFile(readmeFilename, newReadme)

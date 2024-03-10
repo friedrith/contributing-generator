@@ -1,4 +1,4 @@
 const cleanLicenseName = (license: string) =>
-  license.replace(".txt", "").toUpperCase();
+  license.replace('.txt', '').toUpperCase()
 
-export default cleanLicenseName;
+export default cleanLicenseName

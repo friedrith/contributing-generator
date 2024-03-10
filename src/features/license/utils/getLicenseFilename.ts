@@ -1,6 +1,6 @@
-import path from "node:path";
+import path from 'node:path'
 
 const getLicenseFilename = (repositoryPath: string) =>
-  path.join(repositoryPath, "LICENSE");
+  path.join(repositoryPath, 'LICENSE')
 
-export default getLicenseFilename;
+export default getLicenseFilename
