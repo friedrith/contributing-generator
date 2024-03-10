@@ -1,4 +1,4 @@
 const hasProperty = (content: string, property: string) =>
-  content.includes(`{{ ${property} }}`)
+  Boolean(content.match(new RegExp(`{{[ ]*${property}[ ]*}}`)))
 
 export default hasProperty

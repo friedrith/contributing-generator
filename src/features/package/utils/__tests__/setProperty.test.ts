@@ -1,4 +1,4 @@
-import setProperty from '../utils/setProperty'
+import setProperty from '../setProperty'
 
 const formattedContent = (content: object) => JSON.stringify(content, null, 2)
 

@@ -1,9 +1,11 @@
 import PackageManager from './PackageManager'
 
+const commandsWithoutRun = ['start', 'test', 'install']
+
 const npm: PackageManager = {
   getConfigFile: () => 'package-lock.yaml',
   getCommand: (script: string) =>
-    ['start', 'test'].includes(script) ? `npm ${script}` : `pnpm run ${script}`,
+    commandsWithoutRun.includes(script) ? `npm ${script}` : `npm run ${script}`,
 }
 
 export default npm
