@@ -1,0 +1,7 @@
+src
+.github
+.prettierrc
+CONTRIBUTING.md
+jest.config.ts
+tsconfig.json
+node_modules
