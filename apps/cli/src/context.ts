@@ -1,3 +1,4 @@
+import findPackageConfig from './features/package/utils/findPackageConfig'
 import * as git from './services/git'
 import Organization from './types/Organization'
 import Project from './types/Project'
@@ -19,6 +20,9 @@ const context: Context = {
   year: new Date().getFullYear().toString(),
   project: {
     name: '',
+    description: '',
+    version: '',
+    keywords: [],
   },
   issueTracker: {
     url: '',
@@ -61,6 +65,8 @@ const findRepositoryPath = async () => {
 export const getRepositoryPath = async () =>
   context.repository.path || (await findRepositoryPath())
 
+export const getRepository = async () => context.repository
+
 export const getIssueTrackerUrl = async () => {
   const organization = await getOrganization()
   const repository = context.repository
@@ -75,11 +81,22 @@ export const init = async () => {
 
   const repository = await git.findRepository(url)
 
+  const packageConfig = await findPackageConfig(repository.path)
+
   setContext({
+    project: {
+      ...context.project,
+      name: packageConfig.name || repository.name,
+      description: packageConfig.description || context.project.description,
+      version: packageConfig.version || context.project.version,
+      keywords: packageConfig.keywords || context.project.keywords,
+    },
     organization,
     repository,
     issueTracker: {
-      url: await git.findIssueTrackerUrl(organization, repository),
+      url:
+        packageConfig?.bugs?.url ??
+        (await git.findIssueTrackerUrl(organization, repository)),
     },
   })
 }

@@ -2,10 +2,12 @@ import select from '@inquirer/select'
 
 import generateLicense from './features/license/generateLicense'
 import generateContributing from './features/contributing/generateContributing'
+import generateReadme from './features/readme/generateReadme'
 
 const generators = {
   license: generateLicense,
   contributing: generateContributing,
+  readme: generateReadme,
 }
 
 const generator = async () => {
