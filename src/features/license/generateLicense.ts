@@ -84,7 +84,9 @@ const generateLicense = async () => {
 
     await fs.writeFile(packageJsonFilename, newPackageJson)
     printTerminal(message)
-  } catch (error) {}
+  } catch (error) {
+    // do nothing
+  }
 
   const readmeFilename = path.join(repositoryPath, 'README.md')
 
@@ -101,7 +103,9 @@ const generateLicense = async () => {
 
     await fs.writeFile(readmeFilename, newReadme)
     printTerminal(message)
-  } catch (error) {}
+  } catch (error) {
+    // do nothing
+  }
 }
 
 export default generateLicense

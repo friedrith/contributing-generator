@@ -29,13 +29,15 @@ const generateCodeOfConduct = async () => {
 
     templateContent = setVariable(templateContent, 'emailAddress', email)
 
-    fs.writeFile(getCodeOfConductFilename(initialPath), templateContent)
+    fs.writeFile(getCodeOfConductFilename(repositoryPath), templateContent)
 
     console.log()
     console.log(templateContent)
 
     printTerminal('Code of conduct generated')
-  } catch {}
+  } catch {
+    // do nothing
+  }
 }
 
 export default generateCodeOfConduct

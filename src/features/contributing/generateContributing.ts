@@ -3,7 +3,6 @@ import path from 'node:path'
 import confirm from '@inquirer/confirm'
 import input from '@inquirer/input'
 
-import dirname from '../../services/dirname'
 import * as context from '../../context'
 import printTerminal from '../../services/terminal/printTerminal'
 import setVariable from '../../services/template/setVariable'
@@ -139,7 +138,9 @@ const generateContributing = async () => {
 
     await fs.writeFile(readmeFilename, newReadme)
     printTerminal(message)
-  } catch (error) {}
+  } catch (error) {
+    // do nothing
+  }
 }
 
 export default generateContributing

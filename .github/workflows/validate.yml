@@ -39,6 +39,7 @@ jobs:
       - name: Format 🔍
         run: |
           pnpm format
+          pnpm lint
       - name: Test ✅
         run: pnpm test
       - name: Build ⚙️

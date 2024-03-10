@@ -20,7 +20,9 @@ export const detectPackageManager = async (repositoryPath: string) => {
     try {
       await fs.access(lockFile)
       return packageManager[0]
-    } catch {}
+    } catch {
+      // do nothing
+    }
   }
 
   return null

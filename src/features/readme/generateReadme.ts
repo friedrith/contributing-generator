@@ -1,7 +1,6 @@
 import path from 'node:path'
 import { promises as fs } from 'node:fs'
 
-import select from '@inquirer/select'
 import input from '@inquirer/input'
 import confirm from '@inquirer/confirm'
 import * as packageManager from '../package/packageManager'
@@ -94,7 +93,9 @@ ${installCommand} # Install dependencies${
       )
       readmeContent = content
     }
-  } catch {}
+  } catch {
+    // do nothing
+  }
 
   try {
     const license = packageConfig?.license
@@ -117,7 +118,9 @@ ${installCommand} # Install dependencies${
         readmeContent = content
       }
     }
-  } catch {}
+  } catch {
+    // do nothing
+  }
 
   fs.writeFile(readmeFilename, readmeContent)
 

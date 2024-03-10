@@ -1,11 +1,8 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
-import select from '@inquirer/select'
 import input from '@inquirer/input'
-import * as packageConfig from '../package'
 
 import * as context from '../../context'
-import dirname from '../../services/dirname'
 import getPullRequestTemplateFilename from './utils/getPullRequestTemplateFilename'
 import printTerminal from '../../services/terminal/printTerminal'
 import getTemplatePath from '../../getTemplatePath'
