@@ -4,6 +4,7 @@ import select from '@inquirer/select'
 import input from '@inquirer/input'
 import dirname from '../../services/dirname'
 
+import * as git from '../../services/git'
 import * as context from '../../context'
 import setVariable from '../../services/template/setVariable'
 import getCodeOfConductFilename from './utils/getCodeOfConductFilename'
@@ -25,11 +26,17 @@ const generateCodeOfConduct = async () => {
   try {
     let templateContent = await fs.readFile(templateFilename, 'utf-8')
 
-    const email = await input({ message: 'Contact email address:' })
+    const email = await input({
+      message: 'Contact email address:',
+      default: await git.findEmail(),
+    })
 
     templateContent = setVariable(templateContent, 'emailAddress', email)
 
     fs.writeFile(getCodeOfConductFilename(initialPath), templateContent)
+
+    console.log()
+    console.log(templateContent)
 
     printTerminal('Code of conduct generated')
   } catch {}

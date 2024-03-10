@@ -14,6 +14,9 @@ export const findGitUrl = async () =>
 export const findRepositoryPath = async () =>
   executeCommand('git', ['rev-parse', '--show-toplevel'])
 
+export const findEmail = async () =>
+  executeCommand('git', ['config', 'user.email'])
+
 const providers = [github]
 
 const findProvider = async (url: string) =>
