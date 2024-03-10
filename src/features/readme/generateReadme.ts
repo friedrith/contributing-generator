@@ -10,6 +10,8 @@ import * as context from '../../context'
 import setSection from './section/setSection'
 import findPackageConfig from '../package/utils/findPackageConfig'
 import printTerminal from '../../services/terminal/printTerminal'
+import getContributingFilename from '../contributing/utils/getContributingFilename'
+import getContributingContentInReadme from '../contributing/utils/getContributingContentInReadme'
 
 const generateReadme = async () => {
   await context.init()
@@ -31,8 +33,10 @@ const generateReadme = async () => {
 
   let readmeContent = await fs.readFile(readmeFilename, 'utf-8')
 
-  const addGetStarted = await confirm({ message: 'Add "Get Started" section?' })
-  if (addGetStarted) {
+  const addGetStartedSection = await confirm({
+    message: 'Add "Get Started" section?',
+  })
+  if (addGetStartedSection) {
     const installCommand = await packageManager.getCommand(
       repositoryPath,
       'install'
@@ -65,6 +69,25 @@ ${installCommand} # Install dependencies${
 
     readmeContent = content
   }
+
+  try {
+    const contributingFilename = getContributingFilename(repositoryPath)
+
+    await fs.access(contributingFilename)
+
+    const addContributingSection = await confirm({
+      message: 'Add "Contributin" section?',
+    })
+
+    if (addContributingSection) {
+      const { content } = setSection(
+        readmeContent,
+        'Contributing',
+        getContributingContentInReadme()
+      )
+      readmeContent = content
+    }
+  } catch {}
 
   fs.writeFile(readmeFilename, readmeContent)
 

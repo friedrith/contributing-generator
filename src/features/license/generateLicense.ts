@@ -11,9 +11,7 @@ import hasProperty from './utils/properties/hasProperty'
 import * as readme from '../readme'
 import printTerminal from '../../services/terminal/printTerminal'
 import setVariable from '../../services/template/setVariable'
-
-const licenseContentInReadme = (license: string) =>
-  `This project is licensed under the ${license} License - see the [LICENSE](LICENSE) file for details.`
+import getLicenseContentInReadme from './utils/getLicenseContentInReadme'
 
 const generateLicense = async () => {
   await context.init()
@@ -94,7 +92,7 @@ const generateLicense = async () => {
     const { content: newReadme, message } = readme.setSection(
       readmeContent,
       'License',
-      licenseContentInReadme(license)
+      getLicenseContentInReadme(license)
     )
 
     await fs.writeFile(readmeFilename, newReadme)

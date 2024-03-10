@@ -12,19 +12,16 @@ import hideSection from '../../services/template/hideSection'
 import * as packageConfig from '../package'
 import * as readme from '../readme'
 import * as packageManager from '../package/packageManager'
+import getContributingContentInReadme from './utils/getContributingContentInReadme'
+import getContributingFilename from './utils/getContributingFilename'
 
 // hack because of ESM
 const TEMPLATES = path.join(dirname(import.meta.url), './utils/templates')
 
-const CONTRIBUTING = 'CONTRIBUTING.md'
-
 export const getFullPath = (basename: string) => path.join(TEMPLATES, basename)
 
-const contributingContentInReadme = () =>
-  `Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.`
-
 const generateContributing = async () => {
-  const templateFilename = path.join(TEMPLATES, CONTRIBUTING)
+  const templateFilename = getContributingFilename(TEMPLATES)
 
   const templateContent = await fs.readFile(templateFilename, 'utf-8')
 
@@ -99,7 +96,7 @@ const generateContributing = async () => {
     contributingContent = hideSection(contributingContent, 'test')
   }
 
-  const contributingPath = path.join(repositoryPath, CONTRIBUTING)
+  const contributingPath = getContributingFilename(repositoryPath)
 
   const generatedContributingFilename = await input({
     message: 'CONTRIBUTING Path:',
@@ -123,7 +120,7 @@ const generateContributing = async () => {
     const { content: newReadme, message } = readme.setSection(
       readmeContent,
       'Contributing',
-      contributingContentInReadme()
+      getContributingContentInReadme()
     )
 
     await fs.writeFile(readmeFilename, newReadme)
