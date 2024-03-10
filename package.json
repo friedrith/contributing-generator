@@ -1,15 +1,26 @@
 {
-  "name": "contributing-generator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "cli",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node -T ./src/cli.ts",
+    "build": "ncc build ./src/cli.ts -o dist",
+    "test": "jest"
   },
-  "keywords": [],
-  "author": "",
+  "dependencies": {
+    "@inquirer/confirm": "^3.0.0",
+    "@inquirer/input": "^2.0.0",
+    "@inquirer/select": "^2.0.0",
+    "@octokit/rest": "^20.0.2",
+    "@types/inquirer": "^9.0.7"
+  },
   "devDependencies": {
-    "@parcel/transformer-typescript-types": "2.12.0",
-    "typescript": "^5.3.3"
+    "@tsconfig/node20": "^20.1.2",
+    "@tsconfig/strictest": "^2.0.3",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.24",
+    "@vercel/ncc": "^0.38.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2"
   }
 }
