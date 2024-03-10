@@ -1,10 +1,8 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [ "node_modules" ],
-	"compilerOptions": {
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "node",
@@ -13,11 +11,11 @@
     "esModuleInterop": true,
     "noEmit": true,
     "outDir": "dist",
-    "lib": [ "esnext" ],
-	},
+    "lib": ["esnext"]
+  },
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node",
-    "files": true,
-  },
+    "files": true
+  }
 }

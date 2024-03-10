@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import generator from './generator'
+import generator from "./generator";
 
-generator()
+generator();

@@ -2,7 +2,6 @@
 
 :+1::tada: First off, thanks for taking the time to contribute! :tada::+1:
 
-
 ## Found an Issue?
 
 Thank you for reporting any issues you find. We do our best to test and make this project as solid as possible, but any reported issue is a real help.
@@ -16,8 +15,6 @@ Please follow these guidelines when reporting issues:
 - Provide the log of the encountered error if applicable
 - Provide the exact version
 - Be awesome and consider contributing a [pull request](#want-to-contribute)
-
-
 
 ## Want to contribute?
 
@@ -51,8 +48,6 @@ To keep the code base of commitlint neat and tidy the following rules apply to e
 
 > You can also use `npx prettier --write .` to fix prettier errors
 
-
-
 ## Commit Rules
 
 To help everyone with understanding the commit history of commitlint the following commit rules are enforced.
@@ -79,9 +74,6 @@ These are the authorized types:
 
 > Using the right type is really important since it is used to increase the version number automatically.
 
-
-
-
 ## Test
 
 If you add a feature or fix a bug, you need to provide a unit test verifying your
@@ -89,8 +81,6 @@ improvement.You can launch tests using `pnpm test`.
 
 Please follow [AAA pattern](https://medium.com/@pjbgf/title-testing-code-ocd-and-the-aaa-pattern-df453975ab80)
 when writing tests.
-
-
 
 ## Versioning
 

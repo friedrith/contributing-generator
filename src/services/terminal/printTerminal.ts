@@ -1,3 +1,3 @@
-const printTerminal = (message: string) => console.log(`✔ ${message}`)
+const printTerminal = (message: string) => console.log(`✔ ${message}`);
 
-export default printTerminal
+export default printTerminal;

@@ -1,24 +1,24 @@
-import { promises as fs } from 'node:fs'
-import getPackageConfigFilename from './getPackageConfigFilename'
+import { promises as fs } from "node:fs";
+import getPackageConfigFilename from "./getPackageConfigFilename";
 
 const findPackageConfig = async (repositoryPath: string) => {
-  const packageConfigFilename = getPackageConfigFilename(repositoryPath)
+  const packageConfigFilename = getPackageConfigFilename(repositoryPath);
 
   const defaultProject = {
-    name: '',
-    description: '',
-    version: '',
-  }
+    name: "",
+    description: "",
+    version: "",
+  };
 
   try {
-    const content = await fs.readFile(packageConfigFilename, 'utf-8')
+    const content = await fs.readFile(packageConfigFilename, "utf-8");
 
-    const packageJson = JSON.parse(content)
+    const packageJson = JSON.parse(content);
 
-    return packageJson
+    return packageJson;
   } catch {
-    return defaultProject
+    return defaultProject;
   }
-}
+};
 
-export default findPackageConfig
+export default findPackageConfig;

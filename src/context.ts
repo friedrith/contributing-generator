@@ -1,87 +1,87 @@
-import findPackageConfig from './features/package/utils/findPackageConfig'
-import * as git from './services/git'
-import Organization from './types/Organization'
-import Project from './types/Project'
-import Repository from './types/Repository'
+import findPackageConfig from "./features/package/utils/findPackageConfig";
+import * as git from "./services/git";
+import Organization from "./types/Organization";
+import Project from "./types/Project";
+import Repository from "./types/Repository";
 
 interface Context {
-  organization: Organization
-  year: string
-  project: Project
-  issueTracker: { url: string }
-  repository: Repository
+  organization: Organization;
+  year: string;
+  project: Project;
+  issueTracker: { url: string };
+  repository: Repository;
 }
 
 const context: Context = {
   organization: {
-    name: '',
-    username: '',
+    name: "",
+    username: "",
   },
   year: new Date().getFullYear().toString(),
   project: {
-    name: '',
-    description: '',
-    version: '',
+    name: "",
+    description: "",
+    version: "",
     keywords: [],
   },
   issueTracker: {
-    url: '',
+    url: "",
   },
   repository: {
-    provider: '',
-    name: '',
-    remoteOriginUrl: '',
-    path: '',
+    provider: "",
+    name: "",
+    remoteOriginUrl: "",
+    path: "",
   },
-}
+};
 
-export const getContext = () => context
+export const getContext = () => context;
 
-export const getYear = async () => context.year
+export const getYear = async () => context.year;
 
 export const setContext = (partialContext: Partial<Context>) => {
   Object.entries(partialContext).forEach(([key, value]) => {
-    context[key] = value
-  })
-}
+    context[key] = value;
+  });
+};
 
-export const getOrganization = async () => context.organization
+export const getOrganization = async () => context.organization;
 
-export const getProject = async () => context.project
+export const getProject = async () => context.project;
 
 const findRepositoryPath = async () => {
-  const repositoryPath = await git.findRepositoryPath()
+  const repositoryPath = await git.findRepositoryPath();
 
   setContext({
     repository: {
       ...context.repository,
       path: repositoryPath,
     },
-  })
+  });
 
-  return repositoryPath
-}
+  return repositoryPath;
+};
 
 export const getRepositoryPath = async () =>
-  context.repository.path || (await findRepositoryPath())
+  context.repository.path || (await findRepositoryPath());
 
-export const getRepository = async () => context.repository
+export const getRepository = async () => context.repository;
 
 export const getIssueTrackerUrl = async () => {
-  const organization = await getOrganization()
-  const repository = context.repository
+  const organization = await getOrganization();
+  const repository = context.repository;
 
-  return git.findIssueTrackerUrl(organization, repository)
-}
+  return git.findIssueTrackerUrl(organization, repository);
+};
 
 export const init = async () => {
-  const url = await git.findRepositoryUrl()
+  const url = await git.findRepositoryUrl();
 
-  const organization = await git.findOrganization(url)
+  const organization = await git.findOrganization(url);
 
-  const repository = await git.findRepository(url)
+  const repository = await git.findRepository(url);
 
-  const packageConfig = await findPackageConfig(repository.path)
+  const packageConfig = await findPackageConfig(repository.path);
 
   setContext({
     project: {
@@ -98,5 +98,5 @@ export const init = async () => {
         packageConfig?.bugs?.url ??
         (await git.findIssueTrackerUrl(organization, repository)),
     },
-  })
-}
+  });
+};

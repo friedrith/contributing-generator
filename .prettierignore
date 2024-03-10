@@ -1,0 +1,9 @@
+build
+old
+CHANGELOG.md
+public/icons/*.json
+.cache
+coverage
+playwright-report
+pnpm-lock.yaml
+dist
