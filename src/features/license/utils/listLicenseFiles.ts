@@ -2,9 +2,9 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import dirname from '../../../services/dirname'
 import cleanLicenseName from './cleanLicenseName'
+import getTemplatePath from '../../../getTemplatePath'
 
-// hack because of ESM
-const TEMPLATES = path.join(dirname(import.meta.url), 'templates')
+const TEMPLATES = getTemplatePath('LICENSE')
 
 export const getFullPath = (basename: string) => path.join(TEMPLATES, basename)
 

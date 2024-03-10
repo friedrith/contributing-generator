@@ -1,16 +1,12 @@
 import { promises as fs } from 'node:fs'
-import path from 'node:path'
-import select from '@inquirer/select'
 import input from '@inquirer/input'
-import dirname from '../../services/dirname'
 
 import * as git from '../../services/git'
 import * as context from '../../context'
 import setVariable from '../../services/template/setVariable'
 import getCodeOfConductFilename from './utils/getCodeOfConductFilename'
 import printTerminal from '../../services/terminal/printTerminal'
-
-const TEMPLATES = path.join(dirname(import.meta.url), './utils/templates')
+import getTemplatePath from '../../getTemplatePath'
 
 const generateCodeOfConduct = async () => {
   await context.init()
@@ -21,7 +17,7 @@ const generateCodeOfConduct = async () => {
     default: initialPath,
   })
 
-  const templateFilename = getCodeOfConductFilename(TEMPLATES)
+  const templateFilename = getCodeOfConductFilename(getTemplatePath())
 
   try {
     let templateContent = await fs.readFile(templateFilename, 'utf-8')

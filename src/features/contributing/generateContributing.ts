@@ -14,14 +14,10 @@ import * as readme from '../readme'
 import * as packageManager from '../package/packageManager'
 import getContributingContentInReadme from './utils/getContributingContentInReadme'
 import getContributingFilename from './utils/getContributingFilename'
-
-// hack because of ESM
-const TEMPLATES = path.join(dirname(import.meta.url), './utils/templates')
-
-export const getFullPath = (basename: string) => path.join(TEMPLATES, basename)
+import getTemplatePath from '../../getTemplatePath'
 
 const generateContributing = async () => {
-  const templateFilename = getContributingFilename(TEMPLATES)
+  const templateFilename = getContributingFilename(getTemplatePath())
 
   const templateContent = await fs.readFile(templateFilename, 'utf-8')
 

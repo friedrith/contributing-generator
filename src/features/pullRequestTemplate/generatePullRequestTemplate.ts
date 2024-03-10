@@ -8,8 +8,9 @@ import * as context from '../../context'
 import dirname from '../../services/dirname'
 import getPullRequestTemplateFilename from './utils/getPullRequestTemplateFilename'
 import printTerminal from '../../services/terminal/printTerminal'
+import getTemplatePath from '../../getTemplatePath'
 
-const TEMPLATES = path.join(dirname(import.meta.url), './utils/templates')
+const TEMPLATES = getTemplatePath()
 
 const generatePullRequestTemplate = async () => {
   await context.init()
