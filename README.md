@@ -1,6 +1,6 @@
 # contributing-generator
 
-An smart and interactive prompt to generate documentation in _CONTRIBUTING.md_, _LICENSE_, _CODE_OF_CONDUCT.md_, _package.json_ and _README.md_ files for your project.
+An smart and interactive prompt to generate documentation in **CONTRIBUTING.md**, **LICENSE**, **CODE_OF_CONDUCT.md**, **package.json** and **README.md** files for your project.
 
 It gathers as maximum information as possible from your git configuration, github profile and package.json file to generate the files.
 
