@@ -12,6 +12,8 @@ import findPackageConfig from '../package/utils/findPackageConfig'
 import printTerminal from '../../services/terminal/printTerminal'
 import getContributingFilename from '../contributing/utils/getContributingFilename'
 import getContributingContentInReadme from '../contributing/utils/getContributingContentInReadme'
+import getLicenseFilename from '../license/utils/getLicenseFilename'
+import getLicenseContentInReadme from '../license/utils/getLicenseContentInReadme'
 
 const generateReadme = async () => {
   await context.init()
@@ -36,13 +38,14 @@ const generateReadme = async () => {
   const addGetStartedSection = await confirm({
     message: 'Add "Get Started" section?',
   })
+
+  const packageConfig = await findPackageConfig(repositoryPath)
+
   if (addGetStartedSection) {
     const installCommand = await packageManager.getCommand(
       repositoryPath,
       'install'
     )
-
-    const packageConfig = await findPackageConfig(repositoryPath)
 
     const startScripts = ['start', 'dev']
     const availableScripts = Object.keys(packageConfig?.scripts ?? [])
@@ -59,7 +62,8 @@ const generateReadme = async () => {
 ${installCommand} # Install dependencies${
       startScript ? `\n\n${startCommand} # Start the project` : ''
     }
-\`\`\``
+\`\`\`
+`
 
     const { content } = setSection(
       readmeContent,
@@ -76,7 +80,7 @@ ${installCommand} # Install dependencies${
     await fs.access(contributingFilename)
 
     const addContributingSection = await confirm({
-      message: 'Add "Contributin" section?',
+      message: 'Add "Contributing" section?',
     })
 
     if (addContributingSection) {
@@ -86,6 +90,29 @@ ${installCommand} # Install dependencies${
         getContributingContentInReadme()
       )
       readmeContent = content
+    }
+  } catch {}
+
+  try {
+    const license = packageConfig?.license
+
+    const licenseFilename = getLicenseFilename(repositoryPath)
+
+    await fs.access(licenseFilename)
+
+    if (license !== 'ISC') {
+      const addLicenseSection = await confirm({
+        message: 'Add "License" section?',
+      })
+
+      if (addLicenseSection) {
+        const { content } = setSection(
+          readmeContent,
+          'License',
+          getLicenseContentInReadme(license ?? 'MIT')
+        )
+        readmeContent = content
+      }
     }
   } catch {}
 

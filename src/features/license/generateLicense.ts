@@ -12,6 +12,7 @@ import * as readme from '../readme'
 import printTerminal from '../../services/terminal/printTerminal'
 import setVariable from '../../services/template/setVariable'
 import getLicenseContentInReadme from './utils/getLicenseContentInReadme'
+import getLicenseFilename from './utils/getLicenseFilename'
 
 const generateLicense = async () => {
   await context.init()
@@ -56,7 +57,7 @@ const generateLicense = async () => {
   const initialPath = await context.getRepositoryPath()
   const repositoryPath = await input({ message: 'Path:', default: initialPath })
 
-  const generatedLicenseFilename = path.join(repositoryPath, 'LICENSE')
+  const generatedLicenseFilename = getLicenseFilename(repositoryPath)
 
   console.log()
   console.log(licenseContent)

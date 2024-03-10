@@ -1,5 +1,6 @@
 {
   "name": "cli",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "ts-node -T ./src/cli.ts",
