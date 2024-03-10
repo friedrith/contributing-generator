@@ -4,12 +4,14 @@ import generateLicense from './features/license/generateLicense'
 import generateContributing from './features/contributing/generateContributing'
 import generateReadme from './features/readme/generateReadme'
 import generateCodeOfConduct from './features/codeOfConduct/generateCodeOfConduct'
+import generatePullRequestTemplate from './features/pullRequestTemplate/generatePullRequestTemplate'
 
 const generators = {
   license: generateLicense,
   contributing: generateContributing,
   readme: generateReadme,
   code_of_conduct: generateCodeOfConduct,
+  pull_request_template: generatePullRequestTemplate,
 }
 
 const generator = async () => {
