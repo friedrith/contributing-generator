@@ -1,6 +1,8 @@
 # contributing-generator
 
-An interactive prompt to generate CONTRIBUTING.md, LICENSE, CODE_OF_CONDUCT.md, and README.md files for your project.
+An smart and interactive prompt to generate documentation in _CONTRIBUTING.md_, _LICENSE_, _CODE_OF_CONDUCT.md_, _package.json_ and _README.md_ files for your project.
+
+It gathers as maximum information as possible from your git configuration, github profile and package.json file to generate the files.
 
 ## Get Started
 
@@ -14,8 +16,6 @@ $ npx contributing-generator
   code_of_conduct
   pull_request_template
 ```
-
-This will gather as maximum information as possible from your git configuration, github profile and package.json file to generate the files.
 
 For example, it will detect the license if existing, the year, the organization name from github:
 
@@ -31,15 +31,15 @@ For example, it will detect the license if existing, the year, the organization 
 
 Check the templates in the [templates](./templates) folder.
 
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.
-
 ```bash
 pnpm install # Install dependencies
 
 pnpm dev # Start the project
 ```
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code practices and the process for submitting pull requests.
 
 ## License
 
