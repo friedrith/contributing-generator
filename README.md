@@ -6,6 +6,7 @@ An interactive prompt to generate CONTRIBUTING.md, LICENSE, CODE_OF_CONDUCT.md, 
 
 ```bash
 $ npx contributing-generator
+
 ? What do you want to generate? (Use arrow keys)
 ❯ license
   contributing
@@ -25,6 +26,10 @@ For example, it will detect the license if existing, the year, the organization 
 ? Organization: Thibault Friedrich
 ? Path: (/Users/thibault/Code/productivity/contributing-generator)
 ```
+
+> We suggest you to commit your changes before running the generator, as it will overwrite some files and you might want to revert some changes.
+
+Check the templates in the [templates](./templates) folder.
 
 ## Contributing
 
