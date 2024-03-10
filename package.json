@@ -1,5 +1,12 @@
 {
   "name": "contributing-generator",
+  "description": "A generator for the CONTRIBUTING.md files and cie",
+  "keywords": [
+    "contributing",
+    "markdown",
+    "npm"
+  ],
+  "author": "Thibault Friedrich <thibault.friedrich@gmail.com>",
   "license": "MIT",
   "type": "module",
   "version": "0.1.0",

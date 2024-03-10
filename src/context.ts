@@ -75,6 +75,16 @@ export const getIssueTrackerUrl = async () => {
   return git.findIssueTrackerUrl(organization, repository)
 }
 
+const findKeywords = (...keywordsList: string[][]) => {
+  for (const keywords of keywordsList) {
+    if (keywords.length > 0) {
+      return keywords
+    }
+  }
+
+  return []
+}
+
 export const init = async () => {
   const url = await git.findRepositoryUrl()
 
@@ -84,13 +94,26 @@ export const init = async () => {
 
   const packageConfig = await findPackageConfig(repository.path)
 
+  const repositoryInformation = await git.findRepositoryInformation(
+    url,
+    organization.username,
+    repository.name,
+  )
+
   setContext({
     project: {
       ...context.project,
       name: packageConfig.name || repository.name,
-      description: packageConfig.description || context.project.description,
+      description:
+        packageConfig.description ||
+        repositoryInformation.description ||
+        context.project.description,
       version: packageConfig.version || context.project.version,
-      keywords: packageConfig.keywords || context.project.keywords,
+      keywords: findKeywords(
+        packageConfig.keywords ?? [],
+        repositoryInformation.keywords ?? [],
+        context.project.keywords ?? [],
+      ),
     },
     organization,
     repository,

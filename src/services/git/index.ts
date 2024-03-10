@@ -17,6 +17,9 @@ export const findRepositoryPath = async () =>
 export const findEmail = async () =>
   executeCommand('git', ['config', 'user.email'])
 
+export const findName = async () =>
+  executeCommand('git', ['config', 'user.name'])
+
 const providers = [github]
 
 const findProvider = async (url: string) =>
@@ -28,6 +31,12 @@ export const findOrganization = async (url: string) =>
   await providers
     .find(provider => provider.isProvider(url))
     .findOrganization(url)
+
+export const findRepositoryInformation = async (
+  url: string,
+  username: string,
+  name: string,
+) => (await findProvider(url)).getRepositoryInformation(username, name)
 
 export const findRepository = async (url: string): Promise<Repository> => {
   return {

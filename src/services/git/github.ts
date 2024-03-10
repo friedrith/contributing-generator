@@ -40,3 +40,28 @@ export const findOrganization = async (url: string) => {
     email: organization?.email,
   }
 }
+
+export const getRepositoryInformation = async (
+  username: string,
+  name: string,
+) => {
+  try {
+    const response = await fetch(
+      `https://api.github.com/repos/${username}/${name}`,
+    )
+
+    if (response.status === 404) {
+      return {}
+    }
+
+    const repo: { description?: string; topics?: string[] } =
+      await response.json()
+
+    return {
+      description: repo.description,
+      keywords: repo.topics,
+    }
+  } catch (error) {
+    return {}
+  }
+}
