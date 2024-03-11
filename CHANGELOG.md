@@ -1,3 +1,10 @@
+## [1.8.6](https://github.com/friedrith/contributing-generator/compare/v1.8.5...v1.8.6) (2024-03-11)
+
+
+### Bug Fixes
+
+* ci for release ([13f59b0](https://github.com/friedrith/contributing-generator/commit/13f59b009cbf0a26e65795fe0d09cb0f5cb3adae))
+
 ## [1.8.5](https://github.com/friedrith/contributing-generator/compare/v1.8.4...v1.8.5) (2024-03-11)
 
 
