@@ -10,7 +10,9 @@
   "license": "MIT",
   "type": "module",
   "version": "0.1.0",
-  "bin": "./dist/index.js",
+  "bin": {
+    "contributing-generator": "./dist/cli.js"
+  },
   "scripts": {
     "dev": "ts-node -T ./src/cli.ts",
     "build": "ncc build ./src/cli.ts -o dist",
