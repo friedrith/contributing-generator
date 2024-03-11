@@ -18,7 +18,7 @@
     "tag": "latest"
   },
   "scripts": {
-    "dev": "ts-node -T ./src/cli.ts",
+    "dev": "tsx ./src/cli.ts",
     "build": "ncc build ./src/cli.ts -o dist",
     "test": "jest",
     "lint": "eslint .",
@@ -28,7 +28,6 @@
     "@inquirer/confirm": "^3.0.0",
     "@inquirer/input": "^2.0.0",
     "@inquirer/select": "^2.0.0",
-    "@octokit/rest": "^20.0.2",
     "@types/inquirer": "^9.0.7"
   },
   "devDependencies": {
@@ -52,7 +51,7 @@
     "prettier": "^3.2.5",
     "semantic-release": "^23.0.2",
     "ts-jest": "^29.1.2",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.7.1",
     "typescript-eslint": "^7.1.1"
   }
 }
