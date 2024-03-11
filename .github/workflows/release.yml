@@ -59,11 +59,8 @@ jobs:
             @semantic-release/release-notes-generator
             @semantic-release/changelog
             @semantic-release/npm
+            @semantic-release/github
             @semantic-release/git
-            - @semantic-release/github
-            - assets:
-              - "CHANGELOG.md"
-              message: "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -76,4 +73,4 @@ jobs:
           echo ${{ steps.semantic.outputs.new_release_minor_version }}
           echo ${{ steps.semantic.outputs.new_release_patch_version }}
           cat ./package.json
-          cat ./CHANGELOG.md
+          git log -n 1 | cat
