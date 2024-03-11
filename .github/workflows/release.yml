@@ -51,16 +51,17 @@ jobs:
       - name: Build ⚙️
         run: pnpm build
       - name: Release 🚀
-        uses: cycjimmy/semantic-release-action@v4
-        with:
-          branch: master
-          extra_plugins: |
-            @semantic-release/commit-analyzer
-            @semantic-release/release-notes-generator
-            @semantic-release/changelog
-            @semantic-release/npm
-            @semantic-release/github
-            @semantic-release/git
+        run: npx semantic-release
+        # uses: cycjimmy/semantic-release-action@v4
+        # with:
+        #   branch: master
+        #   extra_plugins: |
+        #     @semantic-release/commit-analyzer
+        #     @semantic-release/release-notes-generator
+        #     @semantic-release/changelog
+        #     @semantic-release/npm
+        #     @semantic-release/github
+        #     @semantic-release/git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
