@@ -59,7 +59,6 @@ jobs:
             @semantic-release/release-notes-generator
             @semantic-release/changelog
             @semantic-release/npm
-            @semantic-release/github
             @semantic-release/git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
