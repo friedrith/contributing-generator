@@ -13,6 +13,10 @@
   "bin": {
     "contributing-generator": "./dist/cli.js"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest"
+  },
   "scripts": {
     "dev": "ts-node -T ./src/cli.ts",
     "build": "ncc build ./src/cli.ts -o dist",
