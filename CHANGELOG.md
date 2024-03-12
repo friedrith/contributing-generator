@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/friedrith/contributing-generator/compare/v1.9.0...v1.9.1) (2024-03-12)
+
+
+### Bug Fixes
+
+* pull request template not including technical details ([59baaee](https://github.com/friedrith/contributing-generator/commit/59baaee0e4136b5fabd300deba1f7f4b70d3af08))
+
 # [1.9.0](https://github.com/friedrith/contributing-generator/compare/v1.8.6...v1.9.0) (2024-03-12)
 
 
