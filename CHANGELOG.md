@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/friedrith/contributing-generator/compare/v1.8.6...v1.9.0) (2024-03-12)
+
+
+### Features
+
+* add argument -v to get the version ([1be1f7d](https://github.com/friedrith/contributing-generator/commit/1be1f7d4e505c522bb1bb43a52b79bfa400e54f6))
+
 ## [1.8.6](https://github.com/friedrith/contributing-generator/compare/v1.8.5...v1.8.6) (2024-03-11)
 
 
