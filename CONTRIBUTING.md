@@ -26,7 +26,7 @@ Please consider these guidelines when filing a pull request:
   - Follow [Test guidelines](#tests)
 - Create a pull request
   - Make sure you rebased the current master branch
-  - Squash your commits
+  - Squash the commits you don't want to see in the history
   - Provide a short title with a maximum of 100 characters
   - Provide a more detailed description containing
     _ What you want to achieve

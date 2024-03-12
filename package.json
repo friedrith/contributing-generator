@@ -26,7 +26,8 @@
     "build": "ncc build ./src/cli.ts -o dist",
     "test": "jest",
     "lint": "eslint .",
-    "format": "prettier --check ."
+    "format": "prettier --check .",
+    "commitlint": "commitlint --from=7933a6da056e3492e75d016e4d08e5dbd36127b7"
   },
   "dependencies": {
     "@inquirer/confirm": "^3.0.0",
@@ -35,6 +36,8 @@
     "@types/inquirer": "^9.0.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.1.0",
+    "@commitlint/config-conventional": "^19.1.0",
     "@eslint/js": "^8.57.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^11.1.0",
