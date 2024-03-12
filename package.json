@@ -27,7 +27,7 @@
     "test": "jest",
     "lint": "eslint .",
     "format": "prettier --check .",
-    "commitlint": "commitlint --from=7933a6da056e3492e75d016e4d08e5dbd36127b7"
+    "commitlint": "commitlint --from=6bfccaec00002116071bd82dd33f1ad9ebcde961"
   },
   "dependencies": {
     "@inquirer/confirm": "^3.0.0",
