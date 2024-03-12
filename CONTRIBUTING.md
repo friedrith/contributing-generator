@@ -9,11 +9,7 @@ Thank you for reporting any issues you find. We do our best to test and make thi
 Please follow these guidelines when reporting issues:
 
 - Create a new issue in the [issue tracker](https://github.com/friedrith/contributing-generator/issues/new/choose).
-- Provide a title in the format of `<Error> when <Task>`
-- Tag your issue with the tag `bug`
-- Provide a short summary of what you are trying to do
-- Provide the log of the encountered error if applicable
-- Provide the exact version
+- Follow the provided template and fill out all fields
 - Be awesome and consider contributing a [pull request](#want-to-contribute)
 
 ## Want to contribute?
@@ -21,17 +17,22 @@ Please follow these guidelines when reporting issues:
 You consider contributing changes to this project – we dig that!
 Please consider these guidelines when filing a pull request:
 
-- Follow the [Coding Rules](#coding-rules)
-- Follow the [Commit Rules](#commit-rules)
-- Make sure you rebased the current master branch when filing the pull request
-- Follow [Test guidelines](#tests)
-- Squash your commits when filing the pull request
-- Provide a short title with a maximum of 100 characters
-- Provide a more detailed description containing
-  _ What you want to achieve
-  _ What you changed
-  _ What you added
-  _ What you removed
+- Make sure you read the [Code of Conduct](CODE_OF_CONDUCT.md)
+- Fork the repository
+- Create a new branch
+- Make your changes
+  - Follow the [Coding Rules](#coding-rules)
+  - Follow the [Commit Rules](#commit-rules)
+  - Follow [Test guidelines](#tests)
+- Create a pull request
+  - Make sure you rebased the current master branch
+  - Squash your commits
+  - Provide a short title with a maximum of 100 characters
+  - Provide a more detailed description containing
+    _ What you want to achieve
+    _ What you changed
+    _ What you added
+    _ What you removed
 - For significant changes, post also an issue before to know if your idea has a chance to be accepted
 
 ## Coding Rules
