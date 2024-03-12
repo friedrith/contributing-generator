@@ -8,7 +8,7 @@ Thank you for reporting any issues you find. We do our best to test and make thi
 
 Please follow these guidelines when reporting issues:
 
-- Create a new issue in the [issue tracker](https://github.com/friedrith/contributing-generator/issues).
+- Create a new issue in the [issue tracker](https://github.com/friedrith/contributing-generator/issues/new/choose).
 - Provide a title in the format of `<Error> when <Task>`
 - Tag your issue with the tag `bug`
 - Provide a short summary of what you are trying to do
@@ -57,20 +57,7 @@ To help everyone with understanding the commit history of commitlint the followi
 - maximum of 100 characters
 - for bugs, includes the github tag of the issue in the description.
 - message format of `$type($scope): $message`
-
-These are the authorized types:
-
-- build
-- ci
-- chore
-- docs
-- feat
-- fix
-- perf
-- refactor
-- revert
-- style
-- test
+- use authorized types: build, ci, chore, docs, feat, fix, perf, refactor, revert, style, test
 
 > Using the right type is really important since it is used to increase the version number automatically.
 
