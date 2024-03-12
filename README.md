@@ -28,7 +28,7 @@ Check the templates of these files in the [templates](./templates) folder.
 
 ## Why contributing-generator?
 
-**contributing-generator** is a tool to help you generate a lot of useful markdown files for your project. And it is smart to avoid you to type the same information multiple times.
+`contributing-generator` is a tool to help you generate a lot of useful markdown files for your project. And it is smart to avoid you to type the same information multiple times.
 
 For example, it will detect the license if existing, the year, the organization name from your github:
 

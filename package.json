@@ -13,6 +13,10 @@
   "bin": {
     "contributing-generator": "./dist/cli.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/friedrith/contributing-generator"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "tag": "latest"
