@@ -5,7 +5,7 @@
 
 An smart and interactive prompt to generate documentation in **CONTRIBUTING.md**, **LICENSE**, **CODE_OF_CONDUCT.md**, **package.json** and **README.md** files for your project.
 
-It gathers as maximum information as possible from your git configuration, github profile and package.json file to generate the files.
+`contributing-generator` gathers as maximum information as possible from your git configuration, package.json and github profile to generate the files.
 
 ## Get Started
 
