@@ -43,7 +43,7 @@ To keep the code base of commitlint neat and tidy the following rules apply to e
 - Favor micro library over swiss army knives (rimraf, ncp vs. fs-extra)
 - Be awesome
 
-> use commands `yarn lint` and `yarn format` to be sure your code
+> use commands `pnpm lint` and `pnpm format` to be sure your code
 > respect coding rules.
 
 > You can also use `npx prettier --write .` to fix prettier errors
