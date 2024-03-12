@@ -1,8 +1,19 @@
+# Context
+
+Explain the context of the pull request. What is the problem you are trying to solve? What is the feature you are trying to implement?
+
 # Description
 
 Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
 
 Fixes # (issue)
+
+# Technical details (if applicable)
+
+Please describe the technical details of the implementation. This can include:
+
+- The architecture of the solution
+- The design patterns used
 
 # How Has This Been Tested?
 
