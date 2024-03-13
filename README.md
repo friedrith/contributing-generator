@@ -40,6 +40,8 @@ For example, it will detect the license if existing, the year, the organization 
 ? Path: (/Users/john/code/contributing-generator)
 ```
 
+> Contributing works perfectly for github but it still needs to be tested for other git providers.
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code practices and the process for submitting pull requests.
