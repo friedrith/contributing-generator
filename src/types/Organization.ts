@@ -1,5 +1,5 @@
 export default interface Organization {
   name: string
   username: string
-  email: string
+  email: string | null
 }

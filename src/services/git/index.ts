@@ -1,9 +1,12 @@
 import util from 'node:util'
 import { execFile } from 'node:child_process'
-import * as github from './github'
+import github from './github'
 import extractRepositoryName from './utils/extractRepositoryName'
 import Organization from '../../types/Organization'
 import Repository from '../../types/Repository'
+import Project from '../../types/Project'
+import GitProvider from './types/GitProvider'
+import defaultProvider from './defaultProvider'
 
 const executeCommand = async (command: string, args: string[]) =>
   (await util.promisify(execFile)(command, args)).stdout.replace('\n', '')
@@ -20,9 +23,9 @@ export const findEmail = async () =>
 export const findName = async () =>
   executeCommand('git', ['config', 'user.name'])
 
-const providers = [github]
+const providers = [github, defaultProvider]
 
-const findProvider = async (url: string) =>
+const findProvider = (url: string): GitProvider =>
   providers.find(provider => provider.isProvider(url))
 
 export const findRepositoryUrl = async () => findGitUrl()
@@ -36,13 +39,14 @@ export const findRepositoryInformation = async (
   url: string,
   username: string,
   name: string,
-) => (await findProvider(url)).getRepositoryInformation(username, name)
+): Promise<Partial<Project>> =>
+  findProvider(url).getRepositoryInformation(username, name)
 
 export const findRepository = async (url: string): Promise<Repository> => {
   return {
     remoteOriginUrl: url,
     path: await findRepositoryPath(),
-    provider: (await findProvider(url)).getProviderName(),
+    provider: findProvider(url).getProviderName(),
     name: extractRepositoryName(url),
   }
 }
@@ -51,7 +55,7 @@ export const findIssueTrackerUrl = async (
   organization: Organization,
   repository: Repository,
 ) =>
-  (await findProvider(repository.remoteOriginUrl)).getIssueTrackerUrl(
+  findProvider(repository.remoteOriginUrl).getIssueTrackerUrl(
     organization,
     repository,
   )
