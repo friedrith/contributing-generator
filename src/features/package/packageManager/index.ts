@@ -3,7 +3,7 @@ import path from 'node:path'
 import pnpm from './pnpm'
 import npm from './npm'
 import yarn from './yarn'
-import PackageManager from './PackageManager'
+import PackageManager from './types/PackageManager'
 
 const packageManagers: Record<string, PackageManager> = {
   pnpm,

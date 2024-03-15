@@ -115,7 +115,13 @@ export const init = async () => {
         context.project.keywords ?? [],
       ),
     },
-    organization,
+    organization: {
+      ...organization,
+      email:
+        organization.email ??
+        packageConfig.author?.email ??
+        (await git.findEmail()),
+    },
     repository,
     issueTracker: {
       url:

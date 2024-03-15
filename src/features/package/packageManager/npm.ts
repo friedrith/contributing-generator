@@ -1,4 +1,4 @@
-import PackageManager from './PackageManager'
+import PackageManager from './types/PackageManager'
 
 const commandsWithoutRun = ['start', 'test', 'install']
 

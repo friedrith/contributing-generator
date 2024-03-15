@@ -1,5 +1,7 @@
 import Organization from '../../types/Organization'
+import Project from '../../types/Project'
 import Repository from '../../types/Repository'
+import GitProvider from './types/GitProvider'
 
 const getGithubOrganization = async (username: string) => {
   try {
@@ -20,17 +22,22 @@ const getGithubOrganization = async (username: string) => {
   }
 }
 
-export const isProvider = (url: string) => url.startsWith('git@github.com')
+const HTTP_HOST = 'https://github.com'
 
-export const getProviderName = () => 'github'
+const isProvider = (url: string) =>
+  url.startsWith('git@github.com') || url.startsWith(HTTP_HOST)
 
-export const getIssueTrackerUrl = async (
+const getProviderName = () => 'github'
+
+const getIssueTrackerUrl = async (
   organization: Organization,
   repository: Repository,
 ) => `https://github.com/${organization.username}/${repository.name}/issues`
 
-export const findOrganization = async (url: string) => {
-  const username = url.split(':')[1].split('/')[0]
+const findOrganization = async (url: string): Promise<Organization> => {
+  const username = url.startsWith(HTTP_HOST)
+    ? url.replace(HTTP_HOST, '').split('/')[1]
+    : url.split(':')[1].split('/')[0]
 
   const organization = await getGithubOrganization(username)
 
@@ -41,10 +48,10 @@ export const findOrganization = async (url: string) => {
   }
 }
 
-export const getRepositoryInformation = async (
+const getRepositoryInformation = async (
   username: string,
   name: string,
-) => {
+): Promise<Partial<Project>> => {
   try {
     const response = await fetch(
       `https://api.github.com/repos/${username}/${name}`,
@@ -65,3 +72,11 @@ export const getRepositoryInformation = async (
     return {}
   }
 }
+
+export default {
+  isProvider,
+  getProviderName,
+  findOrganization,
+  getIssueTrackerUrl,
+  getRepositoryInformation,
+} satisfies GitProvider
