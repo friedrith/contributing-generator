@@ -62,10 +62,18 @@ const getRepositoryInformation = async (
   return {}
 }
 
+const getSecurityReportingUrl = (
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _username: string,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _name: string,
+) => ''
+
 export default {
   isProvider,
   getProviderName,
   findOrganization,
   getIssueTrackerUrl,
   getRepositoryInformation,
+  getSecurityReportingUrl,
 } satisfies GitProvider

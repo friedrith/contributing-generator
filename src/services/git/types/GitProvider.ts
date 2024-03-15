@@ -14,4 +14,5 @@ export default interface GitProvider {
     username: string,
     name: string,
   ) => Promise<Partial<Project>>
+  getSecurityReportingUrl: (username: string, name: string) => string
 }

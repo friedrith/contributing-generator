@@ -60,3 +60,12 @@ export const findIssueTrackerUrl = async (
     organization,
     repository,
   )
+
+export const findSecurityReportingUrl = async (
+  organization: Organization,
+  repository: Repository,
+) =>
+  findProvider(repository.remoteOriginUrl).getSecurityReportingUrl(
+    organization.username,
+    repository.name,
+  )
