@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/friedrith/contributing-generator/compare/v1.10.0...v1.11.0) (2024-03-15)
+
+
+### Features
+
+* use object for author in package.json closes [#13](https://github.com/friedrith/contributing-generator/issues/13) ([756e0a3](https://github.com/friedrith/contributing-generator/commit/756e0a3c9ba60c309a5cacb568ac26930f218522))
+
 # [1.10.0](https://github.com/friedrith/contributing-generator/compare/v1.9.2...v1.10.0) (2024-03-15)
 
 
