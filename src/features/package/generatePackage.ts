@@ -27,13 +27,10 @@ const generatePackage = async () => {
   })
 
   const name = await git.findName()
+  const authorName = await input({ message: 'Author name:', default: name })
 
   const email = await git.findEmail()
-
-  const author = await input({
-    message: 'Author:',
-    default: `${name} <${email}>`,
-  })
+  const authorEmail = await input({ message: 'Author email:', default: email })
 
   const packageConfigFilename = getPackageConfigFilename(repositoryPath)
 
@@ -45,7 +42,10 @@ const generatePackage = async () => {
     name: packageConfig.name,
     description,
     keywords: keywords.split(',').map(keyword => keyword.trim()),
-    author,
+    author: {
+      name: authorName,
+      email: authorEmail,
+    },
     ...omit(packageConfig, ['description', 'keywords', 'author']),
   }
 
