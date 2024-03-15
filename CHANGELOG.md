@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/friedrith/contributing-generator/compare/v1.12.0...v1.13.0) (2024-03-15)
+
+
+### Features
+
+* add SECURITY.md ([#20](https://github.com/friedrith/contributing-generator/issues/20)) ([f6861f8](https://github.com/friedrith/contributing-generator/commit/f6861f8587ed137d91cd4beff53eb228e95f3a23)), closes [#18](https://github.com/friedrith/contributing-generator/issues/18)
+
 # [1.12.0](https://github.com/friedrith/contributing-generator/compare/v1.11.0...v1.12.0) (2024-03-15)
 
 
