@@ -24,6 +24,7 @@ $ npx contributing-generator
   code_of_conduct
   pull_request_template
   package
+  security
 ```
 
 Check the templates of these files in the [templates](./templates) folder.
