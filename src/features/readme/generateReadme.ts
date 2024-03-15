@@ -124,7 +124,9 @@ ${installCommand} # Install dependencies${
 
   fs.writeFile(readmeFilename, readmeContent)
 
+  // eslint-disable-next-line no-console
   console.log()
+  // eslint-disable-next-line no-console
   console.log(readmeContent)
 
   if (created) {
