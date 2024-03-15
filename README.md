@@ -7,7 +7,9 @@ A smart and interactive prompt to generate documentation in **CONTRIBUTING.md**,
 
 `contributing-generator` gathers as maximum information as possible from your git configuration, package.json and github profile to generate the files.
 
-![demo](https://github.com/friedrith/contributing-generator/assets/4005226/34170dc3-285b-4dc4-b5ff-b7a134f24c0f)
+<div style="text-align:center">
+<img src='https://github.com/friedrith/contributing-generator/assets/4005226/34170dc3-285b-4dc4-b5ff-b7a134f24c0f' height="300">
+</div>
 
 ## Get Started
 
