@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/friedrith/contributing-generator/compare/v1.11.0...v1.12.0) (2024-03-15)
+
+
+### Features
+
+* add gitlab provider ([#15](https://github.com/friedrith/contributing-generator/issues/15)) ([3967618](https://github.com/friedrith/contributing-generator/commit/39676186d5e1f358f92f323d999d525450de1604)), closes [#8](https://github.com/friedrith/contributing-generator/issues/8)
+
 # [1.11.0](https://github.com/friedrith/contributing-generator/compare/v1.10.0...v1.11.0) (2024-03-15)
 
 
