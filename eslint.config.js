@@ -21,6 +21,9 @@ export default tseslint.config(
         document: 'readonly',
       },
     },
+    rules: {
+      'no-console': ['error', { allow: ['warn', 'error'] }],
+    },
   },
   {
     files: ['**/*.{test,spec}.tsx?'],

@@ -62,8 +62,7 @@ const generateLicense = async () => {
 
   const generatedLicenseFilename = getLicenseFilename(repositoryPath)
 
-  console.log()
-  console.log(licenseContent)
+  printTerminal(licenseContent)
 
   await fs.writeFile(generatedLicenseFilename, licenseContent)
   printTerminal(`License file "${generatedLicenseFilename}" generated`)

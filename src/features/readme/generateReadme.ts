@@ -13,6 +13,7 @@ import getContributingFilename from '../contributing/utils/getContributingFilena
 import getContributingContentInReadme from '../contributing/utils/getContributingContentInReadme'
 import getLicenseFilename from '../license/utils/getLicenseFilename'
 import getLicenseContentInReadme from '../license/utils/getLicenseContentInReadme'
+import printOutput from '../../services/terminal/printOutput'
 
 const generateReadme = async () => {
   await context.init()
@@ -124,10 +125,7 @@ ${installCommand} # Install dependencies${
 
   fs.writeFile(readmeFilename, readmeContent)
 
-  // eslint-disable-next-line no-console
-  console.log()
-  // eslint-disable-next-line no-console
-  console.log(readmeContent)
+  printOutput(readmeContent)
 
   if (created) {
     printTerminal('README file generated')

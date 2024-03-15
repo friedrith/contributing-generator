@@ -24,7 +24,7 @@ const generatePullRequestTemplate = async () => {
   try {
     await fs.access(pullRequestTemplateFilename)
 
-    console.log('Pull request template already exists')
+    console.error('Pull request template already exists')
   } catch (error) {
     const templateFilename = getPullRequestTemplateFilename(TEMPLATES)
 
