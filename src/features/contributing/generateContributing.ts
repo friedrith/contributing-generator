@@ -14,6 +14,7 @@ import * as packageManager from '../package/packageManager'
 import getContributingContentInReadme from './utils/getContributingContentInReadme'
 import getContributingFilename from './utils/getContributingFilename'
 import getTemplatePath from '../../getTemplatePath'
+import printOutput from '../../services/terminal/printOutput'
 
 const generateContributing = async () => {
   const templateFilename = getContributingFilename(getTemplatePath())
@@ -118,9 +119,7 @@ const generateContributing = async () => {
 
   await fs.writeFile(generatedContributingFilename, contributingContent)
 
-  console.log()
-  console.log(contributingContent)
-
+  printOutput(contributingContent)
   printTerminal('Contributing file generated')
 
   try {

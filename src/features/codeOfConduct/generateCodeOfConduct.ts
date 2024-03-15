@@ -7,6 +7,7 @@ import setVariable from '../../services/template/setVariable'
 import getCodeOfConductFilename from './utils/getCodeOfConductFilename'
 import printTerminal from '../../services/terminal/printTerminal'
 import getTemplatePath from '../../getTemplatePath'
+import printOutput from '../../services/terminal/printOutput'
 
 const generateCodeOfConduct = async () => {
   await context.init()
@@ -31,9 +32,7 @@ const generateCodeOfConduct = async () => {
 
     fs.writeFile(getCodeOfConductFilename(repositoryPath), templateContent)
 
-    console.log()
-    console.log(templateContent)
-
+    printOutput(templateContent)
     printTerminal('Code of conduct generated')
   } catch {
     // do nothing

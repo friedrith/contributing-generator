@@ -30,7 +30,7 @@ const generator = async () => {
   if (option in generators) {
     await generators[option]()
   } else {
-    console.log('Not implemented yet')
+    throw new Error('Not implemented yet')
   }
 }
 
