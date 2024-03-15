@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/friedrith/contributing-generator/compare/v1.9.1...v1.9.2) (2024-03-15)
+
+
+### Bug Fixes
+
+* typo in readme ([07b5c80](https://github.com/friedrith/contributing-generator/commit/07b5c809d01e813e67dd900d0aa28fe55bffa567))
+
 ## [1.9.1](https://github.com/friedrith/contributing-generator/compare/v1.9.0...v1.9.1) (2024-03-12)
 
 
