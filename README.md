@@ -3,7 +3,7 @@
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/friedrith/contributing-generator/release.yml)
 ![NPM Version](https://img.shields.io/npm/v/contributing-generator)
 
-An smart and interactive prompt to generate documentation in **CONTRIBUTING.md**, **LICENSE**, **CODE_OF_CONDUCT.md**, **package.json** and **README.md** files for your project.
+A smart and interactive prompt to generate documentation in **CONTRIBUTING.md**, **LICENSE**, **CODE_OF_CONDUCT.md**, **package.json** and **README.md** files for your project.
 
 `contributing-generator` gathers as maximum information as possible from your git configuration, package.json and github profile to generate the files.
 
