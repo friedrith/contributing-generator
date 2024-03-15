@@ -9,7 +9,7 @@
   "author": "Thibault Friedrich <thibault.friedrich@gmail.com>",
   "license": "MIT",
   "type": "module",
-  "version": "1.9.2",
+  "version": "1.10.0",
   "bin": {
     "contributing-generator": "./dist/cli.js"
   },

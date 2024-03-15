@@ -1,3 +1,15 @@
+# [1.10.0](https://github.com/friedrith/contributing-generator/compare/v1.9.2...v1.10.0) (2024-03-15)
+
+
+### Bug Fixes
+
+* commitlint ([#12](https://github.com/friedrith/contributing-generator/issues/12)) ([ce527ff](https://github.com/friedrith/contributing-generator/commit/ce527ff88abe1282dc27169d5b9344ff3b69d798))
+
+
+### Features
+
+* add default git provider ([fdfa42f](https://github.com/friedrith/contributing-generator/commit/fdfa42f7645bfa2927bd67d8184f6b5ea8af0083))
+
 ## [1.9.2](https://github.com/friedrith/contributing-generator/compare/v1.9.1...v1.9.2) (2024-03-15)
 
 
