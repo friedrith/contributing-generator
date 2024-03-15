@@ -6,6 +6,7 @@ import generateReadme from './features/readme/generateReadme'
 import generateCodeOfConduct from './features/codeOfConduct/generateCodeOfConduct'
 import generatePullRequestTemplate from './features/pullRequestTemplate/generatePullRequestTemplate'
 import generatePackage from './features/package/generatePackage'
+import generateSecurity from './features/security/generateSecurity'
 
 const generators = {
   license: generateLicense,
@@ -14,6 +15,7 @@ const generators = {
   code_of_conduct: generateCodeOfConduct,
   pull_request_template: generatePullRequestTemplate,
   package: generatePackage,
+  security: generateSecurity,
 }
 
 const generator = async () => {

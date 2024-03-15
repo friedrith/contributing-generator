@@ -73,10 +73,14 @@ const getRepositoryInformation = async (
   }
 }
 
+const getSecurityReportingUrl = (username: string, repositoryName: string) =>
+  `https://github.com/${username}/${repositoryName}/security/advisories`
+
 export default {
   isProvider,
   getProviderName,
   findOrganization,
   getIssueTrackerUrl,
   getRepositoryInformation,
+  getSecurityReportingUrl,
 } satisfies GitProvider
