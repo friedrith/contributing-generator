@@ -49,7 +49,7 @@ describe('git', () => {
       expect(organization).toEqual({
         email: null,
         name: '',
-        username: '',
+        username: 'project',
       })
     })
   })

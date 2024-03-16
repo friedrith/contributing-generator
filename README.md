@@ -31,21 +31,19 @@ Check the templates of these files in the [templates](./templates) folder.
 
 > We suggest you to commit your changes before running the generator, as it will overwrite some files and you might want to revert some changes.
 
-## Why contributing-generator?
+## Why using contributing-generator?
 
-`contributing-generator` is a tool to help you generate a lot of useful markdown files for your project. And it is smart to avoid you to type the same information multiple times.
-
-For example, it will detect the license if existing, the year, the organization name from your github:
+In comparison of other tools, it is smart and interactive. It will detect the license if existing, the year, the organization name from your github or gitlab and a lot of other information.
 
 ```bash
 ? What do you want to generate? license
-? Choose a license: MIT
+? Choose a license: MIT # <-- coming from your package.json
 ? Year: 2024
-? Organization: John Smith
+? Organization: John Smith # <-- coming from your github profile
 ? Path: (/Users/john/code/contributing-generator)
 ```
 
-> Contributing works perfectly for github but it still needs to be tested for other git providers.
+> `contributing-generator` was tested with github, gitlab and bitbucket.
 
 ## Contributing
 
