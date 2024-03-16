@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/friedrith/contributing-generator/compare/v1.13.0...v1.13.1) (2024-03-16)
+
+
+### Bug Fixes
+
+* add pull request template for gitlab ([#23](https://github.com/friedrith/contributing-generator/issues/23)) ([7070c83](https://github.com/friedrith/contributing-generator/commit/7070c838ce21d7169f093f9909af2b5f7eca5121)), closes [#21](https://github.com/friedrith/contributing-generator/issues/21)
+
 # [1.13.0](https://github.com/friedrith/contributing-generator/compare/v1.12.0...v1.13.0) (2024-03-15)
 
 
