@@ -26,7 +26,7 @@ describe('defaultProvider', () => {
       const organization = await defaultProvider.findOrganization(url)
 
       expect(organization).toEqual({
-        username: '',
+        username: 'username',
         name: '',
         email: null,
       })
