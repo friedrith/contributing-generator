@@ -15,4 +15,5 @@ export default interface GitProvider {
     name: string,
   ) => Promise<Partial<Project>>
   getSecurityReportingUrl: (username: string, name: string) => string
+  getPullRequestTemplateFilename: (repositoryPath: string) => string
 }

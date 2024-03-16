@@ -40,7 +40,7 @@ const generateSecurity = async () => {
   })
   templateContent = setVariable(templateContent, 'product', product)
 
-  const defaultSecurityReportingUrl = await git.findSecurityReportingUrl(
+  const defaultSecurityReportingUrl = git.findSecurityReportingUrl(
     await context.getOrganization(),
     await context.getRepository(),
   )

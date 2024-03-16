@@ -61,11 +61,19 @@ export const findIssueTrackerUrl = async (
     repository,
   )
 
-export const findSecurityReportingUrl = async (
+export const findSecurityReportingUrl = (
   organization: Organization,
   repository: Repository,
 ) =>
   findProvider(repository.remoteOriginUrl).getSecurityReportingUrl(
     organization.username,
     repository.name,
+  )
+
+export const getPullRequestTemplateFilename = (
+  repository: Repository,
+  repositoryPath: string,
+) =>
+  findProvider(repository.remoteOriginUrl).getPullRequestTemplateFilename(
+    repositoryPath,
   )

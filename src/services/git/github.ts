@@ -1,3 +1,4 @@
+import path from 'node:path'
 import Organization from '../../types/Organization'
 import Project from '../../types/Project'
 import Repository from '../../types/Repository'
@@ -73,6 +74,9 @@ const getRepositoryInformation = async (
   }
 }
 
+const getPullRequestTemplateFilename = (repositoryPath: string) =>
+  path.join(repositoryPath, '.github', 'PULL_REQUEST_TEMPLATE.md')
+
 const getSecurityReportingUrl = (username: string, repositoryName: string) =>
   `https://github.com/${username}/${repositoryName}/security/advisories`
 
@@ -83,4 +87,5 @@ export default {
   getIssueTrackerUrl,
   getRepositoryInformation,
   getSecurityReportingUrl,
+  getPullRequestTemplateFilename,
 } satisfies GitProvider
