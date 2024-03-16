@@ -4,7 +4,6 @@ import input from '@inquirer/input'
 
 import * as context from '../../context'
 import * as git from '../../services/git'
-import getPullRequestTemplateFilename from './utils/getPullRequestTemplateFilename'
 import printTerminal from '../../services/terminal/printTerminal'
 import getTemplatePath from '../../getTemplatePath'
 
@@ -29,7 +28,10 @@ const generatePullRequestTemplate = async () => {
 
     console.error('Pull request template already exists')
   } catch (error) {
-    const templateFilename = getPullRequestTemplateFilename(TEMPLATES)
+    const templateFilename = git.getPullRequestTemplateFilename(
+      repository,
+      TEMPLATES,
+    )
 
     const templateContent = await fs.readFile(templateFilename, 'utf-8')
 
