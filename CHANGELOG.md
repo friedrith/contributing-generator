@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/friedrith/contributing-generator/compare/v1.13.1...v1.14.0) (2024-03-16)
+
+
+### Features
+
+* add bitbucket ([#24](https://github.com/friedrith/contributing-generator/issues/24)) ([dd28875](https://github.com/friedrith/contributing-generator/commit/dd288757def7abc007a54212f1715137ac585507)), closes [#19](https://github.com/friedrith/contributing-generator/issues/19)
+
 ## [1.13.1](https://github.com/friedrith/contributing-generator/compare/v1.13.0...v1.13.1) (2024-03-16)
 
 
