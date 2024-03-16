@@ -16,6 +16,7 @@ const generators = {
   pull_request_template: generatePullRequestTemplate,
   package: generatePackage,
   security: generateSecurity,
+  // If you add a new generator, make sure to update the README and the gif following the instructions in the file .docs/README.md
 }
 
 const generator = async () => {

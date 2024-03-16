@@ -1,0 +1,243 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: bash -l
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  # cwd: /Users/thibault/Code/productivity/contributing-generator
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 90
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 13
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: contributing-generator
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: none 
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 39
+    content: "\r\nthibault$ "
+  - delay: 70
+    content: 'n'
+  - delay: 70
+    content: p
+  - delay: 70
+    content: x
+  - delay: 70
+    content: ' '
+  - delay: 70
+    content: c
+  - delay: 70
+    content: o
+  - delay: 70
+    content: 'n'
+  - delay: 70
+    content: t
+  - delay: 70
+    content: r
+  - delay: 70
+    content: i
+  - delay: 70
+    content: b
+  - delay: 70
+    content: u
+  - delay: 70
+    content: t
+  - delay: 70
+    content: i
+  - delay: 70
+    content: 'n'
+  - delay: 70
+    content: g
+  - delay: 70
+    content: '-'
+  - delay: 70
+    content: g
+  - delay: 70
+    content: e
+  - delay: 70
+    content: 'n'
+  - delay: 70
+    content: e
+  - delay: 70
+    content: r
+  - delay: 70
+    content: a
+  - delay: 70
+    content: t
+  - delay: 70
+    content: o
+  - delay: 70
+    content: r
+  - delay: 70
+    content: "\r\n"
+  - delay: 3774
+    content: "\e[?25l"
+  - delay: 7
+    content: "(\e[107;97m#########\e[0m\e[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂\e[0m) ⠋ idealTree: \e[32;40mtiming\e[0m \e[35midealTree\e[0m Completed in 37ms\e[0m\e[K\r"
+  - delay: 48
+    content: "(\e[107;97m#########\e[0m\e[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂\e[0m) ⠇ idealTree: \e[32;40mtiming\e[0m \e[35midealTree\e[0m Completed in 37ms\e[0m\e[K\r"
+  - delay: 50
+    content: "(\e[107;97m#########\e[0m\e[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂\e[0m) ⠇ idealTree: \e[32;40mtiming\e[0m \e[35midealTree\e[0m Completed in 37ms\e[0m\e[K\r"
+  - delay: 54
+    content: "(\e[107;97m#########\e[0m\e[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂\e[0m) ⠇ idealTree: \e[32;40mtiming\e[0m \e[35midealTree\e[0m Completed in 37ms\e[0m\e[K\r"
+  - delay: 50
+    content: "(\e[107;97m#########\e[0m\e[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂\e[0m) ⠇ idealTree: \e[32;40mtiming\e[0m \e[35midealTree\e[0m Completed in 37ms\e[0m\e[K\r"
+  - delay: 51
+    content: "(\e[107;97m#########\e[0m\e[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂\e[0m) ⠇ idealTree: \e[32;40mtiming\e[0m \e[35midealTree\e[0m Completed in 37ms\e[0m\e[K\r"
+  - delay: 49
+    content: "(\e[107;97m#########\e[0m\e[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂\e[0m) ⠇ idealTree: \e[32;40mtiming\e[0m \e[35midealTree\e[0m Completed in 37ms\e[0m\e[K\r"
+  - delay: 72
+    content: "(\e[107;97m#########\e[0m\e[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂\e[0m) ⠇ idealTree: \e[32;40mtiming\e[0m \e[35midealTree\e[0m Completed in 37ms\e[0m\e[K\r"
+  - delay: 6
+    content: "\r\e[K\e[?25h"
+  - delay: 145
+    content: "\e[32m?\e[39m \e[1mWhat do you want to generate?\e[22m \e[2m(Use arrow keys)\e[22m\r\n\e[36m❯ license\e[39m\r\n  contributing\r\n  readme\r\n  code_of_conduct\r\n  pull_request_template\r\n  package\r\n  security\e[?25l\e[10G"
+  - delay: 1976
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G"
+  - delay: 6
+    content: "\e[32m?\e[39m \e[1mWhat do you want to generate?\e[22m\r\n  license\r\n\e[36m❯ contributing\e[39m\r\n  readme\r\n  code_of_conduct\r\n  pull_request_template\r\n  package\e[?25l\e[10G"
+  - delay: 855
+    content: "\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[G"
+  - delay: 10
+    content: "\e[32m?\e[39m \e[1mWhat do you want to generate?\e[22m \e[36mcontributing\e[39m\e[45G\r\n\e[?25h"
+  - delay: 2144
+    content: "\e[32m?\e[39m \e[1mAdd a section \"how to create an issue\"?\e[22m \e[2m(Y/n)\e[22m\e[49G"
+  - delay: 1059
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mAdd a section \"how to create an issue\"?\e[22m \e[36myes\e[39m\e[46G\r\n\e[?25h"
+  - delay: 10
+    content: "\e[32m?\e[39m \e[1mIssue tracker url:\e[22m \e[2m(https://github.com/friedrith/contributing-generator/issues)\e[22m\e[82G"
+  - delay: 592
+    content: "\e[2K\e[G"
+  - delay: 6
+    content: "\e[2K\e[G\e[33m\e[39m \e[1mIssue tracker url:\e[22m \e[36mhttps://github.com/friedrith/contributing-generator/issues\e[39m\e[80G\r\n\e[?25h"
+  - delay: 9
+    content: "\e[32m?\e[39m \e[1mAdd a section \"Coding rules\"?\e[22m \e[2m(Y/n)\e[22m\e[39G"
+  - delay: 341
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mAdd a section \"Coding rules\"?\e[22m \e[36myes\e[39m\e[36G\r\n\e[?25h\e[32m?\e[39m \e[1mAdd a section \"how to create a commit (following conventional commit format)\"?\e[22m \e[2m(Y/n)\e[22m\e[88G"
+  - delay: 431
+    content: "\e[2K\e[G\e[32m?\e[39m \e[1mAdd a section \"how to create a commit (following conventional commit format)\"?\e[22m \e[36myes\e[39m\e[85G\r\n\e[?25h"
+  - delay: 11
+    content: "\e[32m?\e[39m \e[1mAdd a section \"how to write tests\"?\e[22m \e[2m(Y/n)\e[22m\e[45G"
+  - delay: 774
+    content: "\e[2K\e[G"
+  - delay: 15
+    content: "\e[32m?\e[39m \e[1mAdd a section \"how to write tests\"?\e[22m \e[36myes\e[39m\e[42G"
+  - delay: 6
+    content: "\r\n\e[?25h"
+  - delay: 10
+    content: "\e[32m?\e[39m \e[1mAdd a section \"Versioning\"?\e[22m \e[2m(Y/n)\e[22m\e[37G"
+  - delay: 1638
+    content: "\e[2K\e[G"
+  - delay: 12
+    content: "\e[32m?\e[39m \e[1mAdd a section \"Versioning\"?\e[22m \e[36myes\e[39m\e[34G"
+  - delay: 5
+    content: "\r\n\e[?25h"
+  - delay: 14
+    content: "\e[32m?\e[39m \e[1mCONTRIBUTING Path:\e[22m \e[2m(/contributing-generator/CONTRIBUTING.md)\e[22m\e[96G"
+  - delay: 1413
+    content: "\e[2K\e[G"
+  - delay: 13
+    content: "\e[33m\e[39m \e[1mCONTRIBUTING Path:\e[22m \e[2m(/contributing-generator/CONTRIBUTING.md)\e[22m\e[118G\e[2K\e[G\e[33m⠋ 0 ⠋,⠙,⠹,⠸,⠼,⠴,⠦,⠧,⠇,⠏\e[39m \e[1mCONTRIBUTING Path:\e[22m /contributing-generator/CONTRIBUTING.md\e[116G\e[2K\e[G\e[32m?\e[39m \e[1mCONTRIBUTING Path:\e[22m \e[36m/contributing-generator/CONTRIBUTING.md\e[39m\e[94G\r\n\e[?25h"
+  - delay: 7
+    content: "\r\n# Contributing\r\n\r\n\U0001F44D\U0001F389 First off, thanks for taking the time to contribute! \U0001F389\U0001F44D\r\n\r\n\r\n## Found an Issue?\r\n\r\nThank you for reporting any issues you find. We do our best to test and make this project as solid as possible, but any reported issue is a real help.\r\n\r\nPlease follow these guidelines when reporting issues:\r\n\r\n- Create a new issue in the [issue tracker](https://github.com/friedrith/contributing-generator/issues).\r\n- Provide a title in the format of `<Error> when <Task>`\r\n- Tag your issue with the tag `bug`\r\n- Provide a short summary of what you are trying to do\r\n- Provide the log of the encountered error if applicable\r\n- Provide the exact version\r\n- Be awesome and consider contributing a [pull request](#want-to-contribute)\r\n\r\n\r\n\r\n## Want to contribute?\r\n\r\nYou consider contributing changes to this project – we dig that!\r\nPlease consider these guidelines when filing a pull request:\r\n\r\n- Follow the [Coding Rules](#coding-rules)\r\n- Follow the [Commit Rules](#commit-rules)\r\n- Make sure you rebased the current master branch when filing the pull request\r\n- Follow [Test guidelines](#tests)\r\n- Squash your commits when filing the pull request\r\n- Provide a short title with a maximum of 100 characters\r\n- Provide a more detailed description containing\r\n  _ What you want to achieve\r\n  _ What you changed\r\n  _ What you added\r\n  _ What you removed\r\n- For significant changes, post also an issue before to know if your idea has a chance to be accepted\r\n\r\n\r\n\r\n## Coding Rules\r\n\r\nTo keep the code base of commitlint neat and tidy the following rules apply to every change\r\n\r\n- `prettier` is king\r\n- `eslint` is awesome\r\n- Favor micro library over swiss army knives (rimraf, ncp vs. fs-extra)\r\n- Be awesome\r\n\r\n> You can also use `npx prettier --write .` to fix prettier errors\r\n\r\n\r\n\r\n\r\n\r\n## Commit Rules\r\n\r\nTo help everyone with understanding the commit history of commitlint the following commit rules are enforced:\r\n\r\n- [conventional commits](https://www.conventionalcommits.org/en/v1.0.0-beta.3/)\r\n- present tense\r\n- maximum of 100 characters\r\n- for bugs, includes the github tag of the issue in the description.\r\n- message format of `$type($scope): $message`\r\n- use authorized types: build, ci, chore, docs, feat, fix, perf, refactor, revert, style, test\r\n\r\n> Using the right type is really important since it is used to increase the version number automatically.\r\n\r\n\r\n\r\n\r\n## Test\r\n\r\nIf you add a feature or fix a bug, you need to provide a unit test verifying your\r\nimprovement.You can launch tests using `pnpm test`.\r\n\r\nPlease follow [AAA pattern](https://medium.com/@pjbgf/title-testing-code-ocd-and-the-aaa-pattern-df453975ab80)\r\nwhen writing tests.\r\n\r\n\r\n\r\n\r\n## Versioning\r\n\r\nThis project use [semantic versioning](https://semver.org/). The version number is increased based on the commit messages.\r\n\r\n\r\n**May the force be with you !!**\r\n\r\n✔ Contributing file generated\r\n"
+  - delay: 8
+    content: "✔ Contributing updated in README.md\r\n"
+  - delay: 1000
+    content: 'thibault$ '

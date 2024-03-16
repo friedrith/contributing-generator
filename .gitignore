@@ -69,3 +69,4 @@ dist/
 
 playwright-report/
 **/dist/
+*.gif
