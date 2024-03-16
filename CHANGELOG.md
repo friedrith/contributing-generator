@@ -1,3 +1,10 @@
+## [1.14.1](https://github.com/friedrith/contributing-generator/compare/v1.14.0...v1.14.1) (2024-03-16)
+
+
+### Bug Fixes
+
+* markdown in SECURITY.md ([ffb09a0](https://github.com/friedrith/contributing-generator/commit/ffb09a0fe75d98a161628801f15207f0463b8a2d))
+
 # [1.14.0](https://github.com/friedrith/contributing-generator/compare/v1.13.1...v1.14.0) (2024-03-16)
 
 
