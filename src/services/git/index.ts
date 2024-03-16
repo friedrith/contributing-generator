@@ -8,6 +8,7 @@ import Project from '../../types/Project'
 import GitProvider from './types/GitProvider'
 import defaultProvider from './defaultProvider'
 import gitlab from './gitlab'
+import bitbucket from './bitbucket'
 
 const executeCommand = async (command: string, args: string[]) =>
   (await util.promisify(execFile)(command, args)).stdout.replace('\n', '')
@@ -24,7 +25,7 @@ export const findEmail = async () =>
 export const findName = async () =>
   executeCommand('git', ['config', 'user.name'])
 
-const providers = [github, gitlab, defaultProvider]
+const providers = [github, gitlab, bitbucket, defaultProvider]
 
 const findProvider = (url: string): GitProvider =>
   providers.find(provider => provider.isProvider(url))

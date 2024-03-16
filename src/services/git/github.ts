@@ -3,6 +3,8 @@ import Organization from '../../types/Organization'
 import Project from '../../types/Project'
 import Repository from '../../types/Repository'
 import GitProvider from './types/GitProvider'
+import hasDomain from './utils/hasDomain'
+import extractUsername from './utils/extractUsername'
 
 const getGithubOrganization = async (username: string) => {
   try {
@@ -23,10 +25,7 @@ const getGithubOrganization = async (username: string) => {
   }
 }
 
-const HTTP_HOST = 'https://github.com'
-
-const isProvider = (url: string) =>
-  url.startsWith('git@github.com') || url.startsWith(HTTP_HOST)
+const isProvider = (url: string) => hasDomain('github.com', url)
 
 const getProviderName = () => 'github'
 
@@ -36,10 +35,7 @@ const getIssueTrackerUrl = async (
 ) => `https://github.com/${organization.username}/${repository.name}/issues`
 
 const findOrganization = async (url: string): Promise<Organization> => {
-  const username = url.startsWith(HTTP_HOST)
-    ? url.replace(HTTP_HOST, '').split('/')[1]
-    : url.split(':')[1].split('/')[0]
-
+  const username = extractUsername(url)
   const organization = await getGithubOrganization(username)
 
   return {
