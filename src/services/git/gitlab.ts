@@ -1,3 +1,5 @@
+import path from 'node:path'
+
 import Organization from '../../types/Organization'
 import Project from '../../types/Project'
 import Repository from '../../types/Repository'
@@ -69,6 +71,10 @@ const getSecurityReportingUrl = (
   _name: string,
 ) => ''
 
+// https://docs.gitlab.com/ee/user/project/description_templates.html
+const getPullRequestTemplateFilename = (repositoryPath: string) =>
+  path.join(repositoryPath, '.gitlab', 'merge_request_templates', 'TEMPLATE.md')
+
 export default {
   isProvider,
   getProviderName,
@@ -76,4 +82,5 @@ export default {
   getIssueTrackerUrl,
   getRepositoryInformation,
   getSecurityReportingUrl,
+  getPullRequestTemplateFilename,
 } satisfies GitProvider

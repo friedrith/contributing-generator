@@ -1,3 +1,5 @@
+import path from 'node:path'
+
 import Organization from '../../types/Organization'
 import Project from '../../types/Project'
 import Repository from '../../types/Repository'
@@ -38,6 +40,9 @@ const getSecurityReportingUrl = (
   _name: string,
 ) => ''
 
+const getPullRequestTemplateFilename = (repositoryPath: string) =>
+  path.join(repositoryPath, 'PULL_REQUEST_TEMPLATE.md')
+
 export default {
   isProvider,
   getProviderName,
@@ -45,4 +50,5 @@ export default {
   getIssueTrackerUrl,
   getRepositoryInformation,
   getSecurityReportingUrl,
+  getPullRequestTemplateFilename,
 } satisfies GitProvider
