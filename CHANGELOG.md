@@ -1,3 +1,10 @@
+## [1.14.3](https://github.com/friedrith/contributing-generator/compare/v1.14.2...v1.14.3) (2024-05-24)
+
+
+### Bug Fixes
+
+* contributing template not included in npm ([#26](https://github.com/friedrith/contributing-generator/issues/26)) ([26cef1b](https://github.com/friedrith/contributing-generator/commit/26cef1b9e81e568adb115a73eba6f7d30d2acc59))
+
 ## [1.14.2](https://github.com/friedrith/contributing-generator/compare/v1.14.1...v1.14.2) (2024-05-24)
 
 
