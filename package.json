@@ -11,7 +11,7 @@
   "type": "module",
   "version": "1.14.0",
   "bin": {
-    "contributing-generator": "./dist/cli.js"
+    "contributing-generator": "./dist/index.js"
   },
   "repository": {
     "type": "git",
