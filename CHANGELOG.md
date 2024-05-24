@@ -1,3 +1,10 @@
+## [1.14.2](https://github.com/friedrith/contributing-generator/compare/v1.14.1...v1.14.2) (2024-05-24)
+
+
+### Bug Fixes
+
+* cli path ([#25](https://github.com/friedrith/contributing-generator/issues/25)) ([6348c63](https://github.com/friedrith/contributing-generator/commit/6348c6353593fa5e4bedbe62545b84e3aebed358))
+
 ## [1.14.1](https://github.com/friedrith/contributing-generator/compare/v1.14.0...v1.14.1) (2024-03-16)
 
 
