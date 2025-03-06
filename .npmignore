@@ -1,5 +1,5 @@
 src
-.github
+/.github
 .prettierrc
 jest.config.ts
 tsconfig.json
