@@ -1,3 +1,10 @@
+## [1.14.5](https://github.com/friedrith/contributing-generator/compare/v1.14.4...v1.14.5) (2025-03-07)
+
+
+### Bug Fixes
+
+* code of conduct ([25f40fc](https://github.com/friedrith/contributing-generator/commit/25f40fccfb42e0381e33c2566afd583e30ac8692))
+
 ## [1.14.4](https://github.com/friedrith/contributing-generator/compare/v1.14.3...v1.14.4) (2025-03-07)
 
 
