@@ -45,6 +45,6 @@ jobs:
           pnpm lint
           pnpm commitlint
       - name: Test ✅
-        run: pnpm test  -- --coverage
+        run: pnpm test
       - name: Build ⚙️
         run: pnpm build
