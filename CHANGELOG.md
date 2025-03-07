@@ -1,3 +1,10 @@
+## [1.14.4](https://github.com/friedrith/contributing-generator/compare/v1.14.3...v1.14.4) (2025-03-07)
+
+
+### Bug Fixes
+
+* remove github templates from npmignore ([6eb4bea](https://github.com/friedrith/contributing-generator/commit/6eb4beafcb935ff2bcfb2eaf0ffbe6a7db69029c))
+
 ## [1.14.3](https://github.com/friedrith/contributing-generator/compare/v1.14.2...v1.14.3) (2024-05-24)
 
 

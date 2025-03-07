@@ -9,7 +9,7 @@
   "author": "Thibault Friedrich <thibault.friedrich@gmail.com>",
   "license": "MIT",
   "type": "module",
-  "version": "1.14.3",
+  "version": "1.14.4",
   "bin": {
     "contributing-generator": "./dist/index.js"
   },
